@@ -14,14 +14,14 @@ const Routers: FC<Props> = (props: Props) => {
   return (
     <NativeRouter>
       <Switch>
-        {/* <PublicRoute exact path={ScreenURL.HOME} component={Dashboard} /> */}
-        <PublicRoute exact path={ScreenURL.HOME} component={Login} />
+        <PublicRoute exact path={ScreenURL.HOME} component={Dashboard} />
+        {/* <PublicRoute exact path={ScreenURL.HOME} component={Login} /> */}
         {/* <PublicRoute exact path={ScreenURL.LOGIN} component={Login} /> */}
-        <PublicRoute
+        {/* <PublicRoute
           exact
           path={ScreenURL.FORGOT_PASSWORD}
           component={ForgotPassword}
-        />
+        /> */}
         {/* <PublicRoute exact path={ScreenURL.HOME} component={ResetPassword} /> */}
         {/* <PublicRoute exact path={ScreenURL.HOME} component={ChangePassword} /> */}
       </Switch>
