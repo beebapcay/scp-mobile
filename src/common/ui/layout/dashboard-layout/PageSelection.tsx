@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Color } from '../../common/enum/enum';
+import { Color } from '../../../enum/enum';
 import style from './style';
 
 interface Props {

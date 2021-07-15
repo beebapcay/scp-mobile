@@ -5,8 +5,8 @@ import { ScreenURL } from "../models/enum";
 import PublicRoute from "./PublicRoute";
 import ForgotPassword from "../app/auth/forgot-pass";
 import ResetPassword from "../app/auth/reset-pass";
-import Dashboard from "../app/dashboard";
 import ChangePassword from "../app/auth/change-pass";
+import Dashboard from "../common/ui/layout/dashboard-layout";
 
 interface Props {}
 
