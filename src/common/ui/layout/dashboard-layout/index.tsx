@@ -117,13 +117,13 @@ const Dashboard: FC<Props> = (props: Props) => {
 
     // Component
     return (
-      <View style={internalStyle.container}>
+      <View style={internalStyle.container} key={index.toString()}>
         <DashboardRow {...item} />
       </View>
     );
   }
   const keyExtractor = (item: DashboardRowProps): string => {
-    return item.no.toString();
+    return item.key;
   }
 
   // Events
@@ -158,7 +158,8 @@ const Dashboard: FC<Props> = (props: Props) => {
           data={dataSection}
           scrollEnabled={false}
           ListHeaderComponent={renderDashboardHeader}
-          renderItem={({ item, index }) => <DashboardRow {...item} />} />
+          renderItem={renderDashboardRow} 
+          keyExtractor={keyExtractor}/>
 
       </ScrollView>
 
