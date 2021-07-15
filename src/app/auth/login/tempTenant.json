@@ -1,0 +1,16 @@
+{
+    "tenants":[
+        {
+            "label":"System",
+            "value":"system"
+        },
+        {
+            "label":"Private",
+            "value":"private"
+        },
+        {
+            "label":"Test",
+            "value":"test"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "title.login":"Đăng nhập",
+    "title.register":"Đăng ký",
+    "title.forgotPassword":"Quên mật khẩu",
+    "title.username":"Tài khoản",
+    "title.password":"Mật khẩu",
+    "title.email":"Địa chỉ email",
+    "title.send":"Gửi",
+    "title.sentReset":"Email gửi thành công",
+    "title.backToLogin":"Quay về đăng nhập",
+    "title.resetPassword":"Thay đổi mật khẩu",
+    "title.newPassword":"Mật khẩu mới",
+    "title.confirmNewPassword":"Nhập lại",
+    "title.resetCompleted":"Thay đổi mật khẩu thành công",
+    "title.changePassword":"Thay đổi mật khẩu",
+    "title.oldPassword":"Mật khẩu cũ",
+    "title.confirmChangePassword":"Thay đổi",
+    "title.changePasswordCompleted":"Thay đổi mật khẩu thành công",
+    "title.backToHome":"Trở về màn hình chính",
+    "forgot.description1":"Hãy nhập vào địa chỉ email.",
+    "forgot.description2":"Một email mới sẽ được gửi đến hộp thư.",
+    "forgot.description3":"Hãy làm theo hướng dẫn để được cấp mật khẩu mới"
+}

@@ -1,0 +1,23 @@
+{
+    "title.login":"Login",
+    "title.register":"Register",
+    "title.forgotPassword":"Forgot password",
+    "title.username":"Username",
+    "title.password":"Password",
+    "title.email":"Email address",
+    "title.send":"Send",
+    "title.sentReset":"Email had been sent",
+    "title.backToLogin":"Back to login",
+    "title.resetPassword":"Reset password",
+    "title.newPassword":"New password",
+    "title.confirmNewPassword":"Confirm new password",
+    "title.resetCompleted":"Reset password completed",
+    "title.changePassword":"Change password",
+    "title.oldPassword":"Old pasword",
+    "title.confirmChangePassword":"Change",
+    "title.changePasswordCompleted":"Change password completed",
+    "title.backToHome":"Back to home",
+    "forgot.description1":"Please enter your email.",
+    "forgot.description2":"An email will be sent to your inbox.",
+    "forgot.description3":"Please follow the instructions to reset your password"
+}
