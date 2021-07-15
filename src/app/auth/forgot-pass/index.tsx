@@ -4,7 +4,7 @@ import styles from "../../../common/ui/layout/card-view-layout/style";
 import { Entypo } from "react-native-vector-icons";
 import { useTranslation } from "react-i18next";
 import EmailTextInput from "../../../common/ui/base/textInput/emailTextInput";
-import { email_reg } from "../../../common/util/constants";
+import { EMAIL_PATTERN } from "../../../common/util/constants";
 import ButtonContainer from "./containers/btnContainer";
 import ResetComplete from "../../../common/ui/layout/card-view-layout/resetComplete";
 import { RouteComponentProps } from "react-router-native";
@@ -21,7 +21,7 @@ const ForgotPassword = (props: Props) => {
   };
 
   const handleSendPress = (): void => {
-    if (email.match(email_reg)) {
+    if (email.match(EMAIL_PATTERN)) {
       setComplete(true);
     }
   };
