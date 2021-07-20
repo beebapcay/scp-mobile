@@ -2,15 +2,15 @@ import React, { FC } from "react";
 import { useState } from "react";
 import { FieldError } from "react-hook-form";
 import { Text, TextInput, View } from "react-native";
-import styles from "../style";
+import styles from "./style";
 
 interface Props {
   label: string;
   value: string;
-  onChangeText: Function;
-  error: FieldError | undefined;
+  onChangeText: (text: string) => void;
+  valid: boolean;
   errorText?: string;
-  isEdit: boolean;
+  isEdited: boolean;
 }
 
 const CInput: FC<Props> = (props: Props) => {
@@ -19,11 +19,14 @@ const CInput: FC<Props> = (props: Props) => {
     <View>
       <Text style={styles.titleInput}>{props.label}: </Text>
       <TextInput
-        editable={props.isEdit}
-        style={[
-          isFocus ? styles.focusInput : styles.unfocusInput,
-          props.error && styles.invalidInput,
-        ]}
+        editable={props.isEdited}
+        style={
+          props.valid
+            ? isFocus
+              ? styles.focusInput
+              : styles.unfocusInput
+            : styles.invalidInput
+        }
         onChangeText={(text: string) => props.onChangeText(text)}
         value={props.value}
         onFocus={() => setIsFocus(true)}

@@ -3,10 +3,10 @@ import { Text, View, Alert, TouchableOpacity } from "react-native";
 import styles from "../style";
 
 interface Props {
-  isEdit: boolean;
-  setIsEdit: Function;
-  save: Function;
-  reset: Function;
+  isEdited: boolean;
+  setIsEdited: (isEdit: boolean) => void;
+  reset: () => void;
+  save: () => void;
 }
 
 const BtnContainer: FC<Props> = (props: Props) => {
@@ -23,7 +23,7 @@ const BtnContainer: FC<Props> = (props: Props) => {
           text: "Lưu",
           onPress: () => {
             props.save();
-            props.setIsEdit(!props.isEdit);
+            props.setIsEdited(!props.isEdited);
           },
         },
       ]
@@ -31,11 +31,10 @@ const BtnContainer: FC<Props> = (props: Props) => {
 
   return (
     <View style={styles.btnView}>
-      {props.isEdit ? (
+      {props.isEdited ? (
         <TouchableOpacity
           style={styles.editBtn}
           onPress={() => {
-            props.setIsEdit(!props.isEdit);
             props.reset();
           }}
         >
@@ -45,15 +44,15 @@ const BtnContainer: FC<Props> = (props: Props) => {
         <TouchableOpacity
           style={styles.editBtn}
           onPress={() => {
-            props.setIsEdit(!props.isEdit);
+            props.setIsEdited(!props.isEdited);
           }}
         >
           <Text style={styles.editBtnText}>Chỉnh sửa</Text>
         </TouchableOpacity>
       )}
       <TouchableOpacity
-        disabled={!props.isEdit}
-        style={!props.isEdit ? styles.saveBtnDisable : styles.saveBtn}
+        disabled={!props.isEdited}
+        style={!props.isEdited ? styles.saveBtnDisable : styles.saveBtn}
         onPress={() => {
           SaveAlert();
         }}
