@@ -53,6 +53,7 @@ const AvatarContainer: FC<Props> = (props: Props) => {
         )}
       </View>
       <TouchableOpacity
+        disabled={!props.isEdit}
         onPress={pickImage}
         style={
           props.isEdit ? styles.editAvatarBtn : styles.editAvatarBtnDisable

@@ -65,14 +65,12 @@ const styles = StyleSheet.create({
     borderColor: "red",
   },
   btnView: {
-    margin: 5,
     flexDirection: "row",
     justifyContent: "flex-start",
   },
   editBtn: {
     width: 100,
     borderWidth: 1,
-    margin: 5,
     padding: 8,
     alignItems: "center",
     borderColor: "#1eb2ff",
@@ -82,15 +80,15 @@ const styles = StyleSheet.create({
   },
   saveBtn: {
     width: 100,
-    margin: 5,
     padding: 8,
+    marginLeft: 10,
     alignItems: "center",
     backgroundColor: "#1eb2ff",
   },
   saveBtnDisable: {
     width: 100,
-    margin: 5,
     padding: 8,
+    marginLeft: 10,
     alignItems: "center",
     backgroundColor: "#1eb2ff",
     opacity: 0.6,
@@ -110,7 +108,7 @@ const styles = StyleSheet.create({
     top: "5%",
   },
   editAvatarBtnDisable: {
-    backgroundColor: "#1eb2ff",
+    backgroundColor: "#78d1ff",
     width: 40,
     height: 40,
     borderRadius: 20,

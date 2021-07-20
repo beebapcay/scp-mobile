@@ -1,18 +1,10 @@
 import React, { FC } from "react";
 import { Text, View, Alert, TouchableOpacity } from "react-native";
 import styles from "../style";
-import { UserForm, UserProfile } from "../../../models";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../models/rootReducer";
-import { resetUserInfo, updateUserInfo } from "../slice";
-import { useEffect } from "react";
-import { validateEmail, validateName } from "../../../common/util/common";
 
 interface Props {
   isEdit: boolean;
   setIsEdit: Function;
-  disabled: boolean;
   save: Function;
   reset: Function;
 }
@@ -60,8 +52,8 @@ const BtnContainer: FC<Props> = (props: Props) => {
         </TouchableOpacity>
       )}
       <TouchableOpacity
-        disabled={props.disabled}
-        style={props.disabled ? styles.saveBtnDisable : styles.saveBtn}
+        disabled={!props.isEdit}
+        style={!props.isEdit ? styles.saveBtnDisable : styles.saveBtn}
         onPress={() => {
           SaveAlert();
         }}

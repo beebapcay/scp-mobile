@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserForm, UserProfile } from "../../models";
+import { UserFormInput, UserProfile } from "../../models";
 import { Gender, Positions } from "../../models/enum";
 
 const issue_Date = new Date("10/05/2015");
@@ -32,9 +32,9 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    updateUserInfo: (state, action: PayloadAction<UserForm>) => {
+    updateUserInfo: (state, action: PayloadAction<UserFormInput>) => {
       state.userInfo.first_name = action.payload.firstName;
-      state.userInfo.last_name = action.payload.lastname;
+      state.userInfo.last_name = action.payload.lastName;
       state.userInfo.email = action.payload.email;
     },
     updateAvatar: (state, action: PayloadAction<string>) => {
