@@ -36,33 +36,9 @@ const styles = StyleSheet.create({
   infoContainer: {
     width: "100%",
   },
-  editInput: {
-    padding: 10,
-  },
-  titleInput: {
+  label: {
     marginBottom: 6,
     color: "#5e6c84",
-  },
-  unfocusInput: {
-    height: 40,
-    width: "100%",
-    padding: 8,
-    borderWidth: 1,
-    borderColor: "#dfe1e6",
-  },
-  focusInput: {
-    height: 40,
-    width: "100%",
-    padding: 8,
-    borderWidth: 1,
-    borderColor: "#1eb2ff",
-  },
-  invalidInput: {
-    height: 40,
-    width: "100%",
-    padding: 8,
-    borderWidth: 1,
-    borderColor: "red",
   },
   btnView: {
     flexDirection: "row",

@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../models/rootReducer";
 import { updateUserInfo } from "../slice";
 import BtnContainer from "./BtnContainer";
-import { CInput } from "../../../common/ui/base/input";
+import { CInputError, CInput } from "../../../common/ui/base/input";
 import AvatarContainer from "./AvatarContainer";
 import styles from "../style";
 
@@ -23,7 +23,6 @@ const FormContainer: FC<Props> = (props: Props) => {
     control,
     handleSubmit,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<UserFormInput>();
   const userInfo: UserProfile = useSelector(
@@ -68,6 +67,7 @@ const FormContainer: FC<Props> = (props: Props) => {
   return (
     <View style={styles.formView}>
       <AvatarContainer isEdit={isEdited} />
+      <Text style={styles.label}>Tên: </Text>
       <Controller
         control={control}
         rules={{
@@ -76,7 +76,6 @@ const FormContainer: FC<Props> = (props: Props) => {
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
-            label="Tên"
             valid={!errors.firstName}
             errorText={errors?.firstName?.message}
             onChangeText={onChange}
@@ -87,10 +86,9 @@ const FormContainer: FC<Props> = (props: Props) => {
         name="firstName"
         defaultValue={userInfo.first_name}
       />
-      {errors.firstName && (
-        <Text style={{ color: "red" }}>{errors.firstName.message}</Text>
-      )}
+      {errors.firstName && <CInputError value={errors.firstName?.message} />}
 
+      <Text style={styles.label}>Họ: </Text>
       <Controller
         control={control}
         rules={{
@@ -99,7 +97,6 @@ const FormContainer: FC<Props> = (props: Props) => {
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
-            label="Họ"
             valid={!errors.lastName}
             errorText={errors?.lastName?.message}
             onChangeText={onChange}
@@ -110,10 +107,9 @@ const FormContainer: FC<Props> = (props: Props) => {
         name="lastName"
         defaultValue={userInfo.last_name}
       />
-      {errors.lastName && (
-        <Text style={{ color: "red" }}>{errors.lastName.message}</Text>
-      )}
+      {errors.lastName && <CInputError value={errors.lastName?.message} />}
 
+      <Text style={styles.label}>Địa chỉ Email: </Text>
       <Controller
         control={control}
         rules={{
@@ -122,7 +118,6 @@ const FormContainer: FC<Props> = (props: Props) => {
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
-            label="Địa chỉ Email"
             valid={!errors.email}
             errorText={errors?.email?.message}
             onChangeText={onChange}
@@ -133,9 +128,7 @@ const FormContainer: FC<Props> = (props: Props) => {
         name="email"
         defaultValue={userInfo.email}
       />
-      {errors.email && (
-        <Text style={{ color: "red" }}>{errors.email.message}</Text>
-      )}
+      {errors.email && <CInputError value={errors.email?.message} />}
 
       <BtnContainer
         save={onSubmit}
