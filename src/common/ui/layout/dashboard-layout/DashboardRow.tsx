@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import style from "./style";
 
 export interface DashboardRowProps {
-  key: string
   no: number;
   from: Date;
   to: Date;
