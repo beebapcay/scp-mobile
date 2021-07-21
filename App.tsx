@@ -8,9 +8,9 @@ interface Props { };
 
 const App: FC<Props> = (props: Props) => {
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <Routers />
-    </Provider>
+    // </Provider>
   );
 };
 
