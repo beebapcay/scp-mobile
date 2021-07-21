@@ -11,7 +11,6 @@ import ButtonContainer from './btnContainer';
 import CompleteComponent from '../../../common/ui/layout/auth-layout/completeComponent';
 import ResetLayout from '../../../common/ui/layout/auth-layout/resetLayout';
 
-
 interface Props extends RouteComponentProps<any> {}
 interface SubmitObject {
   email: string;
@@ -31,6 +30,7 @@ const ForgotPassword: FC<Props> = (props: Props) => {
     reset({
       email: '',
     });
+  };
 
   const handleBackPress = (): void => {
     setComplete(false);
