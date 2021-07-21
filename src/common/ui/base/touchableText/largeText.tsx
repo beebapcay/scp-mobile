@@ -1,17 +1,15 @@
-import React from "react";
-import { TouchableWithoutFeedback, Text } from "react-native";
-import styles from "../../base/touchableText/style";
+import React, { FC } from 'react';
+import { TouchableWithoutFeedback, Text } from 'react-native';
+import styles from '../../base/touchableText/style';
 
 interface Props {
-  onTextPress: Function;
+  onTextPress: () => void;
   title: string;
 }
-const LargeText = (props: Props) => {
-  return (
-    <TouchableWithoutFeedback onPress={() => props.onTextPress()}>
-      <Text style={styles.largeText}>{props.title}</Text>
-    </TouchableWithoutFeedback>
-  );
-};
+const LargeText: FC<Props> = (props: Props) => (
+  <TouchableWithoutFeedback onPress={() => props.onTextPress()}>
+    <Text style={styles.largeText}>{props.title}</Text>
+  </TouchableWithoutFeedback>
+);
 
 export default LargeText;

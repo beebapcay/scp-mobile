@@ -9,9 +9,9 @@ export enum ScreenURL {
 }
 
 export enum ScopeKey {
-  IS_AUTHENTICATED = "8Wo8lm11M2UBtWSfU3J7",
-  LANG = "RlUJt971uBVOaBwMRTam",
-  ACCESS_TOKEN = "5EsS8VCz8GELPSDaPQXP",
+  IS_AUTHENTICATED = '8Wo8lm11M2UBtWSfU3J7',
+  LANG = 'RlUJt971uBVOaBwMRTam',
+  ACCESS_TOKEN = '5EsS8VCz8GELPSDaPQXP',
 }
 
 export enum ScopeValue {

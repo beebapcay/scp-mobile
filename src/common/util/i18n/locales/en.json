@@ -19,5 +19,10 @@
     "title.backToHome":"Back to home",
     "forgot.description1":"Please enter your email.",
     "forgot.description2":"An email will be sent to your inbox.",
-    "forgot.description3":"Please follow the instructions to reset your password"
+    "forgot.description3":"Please follow the instructions to reset your password",
+    "title.usernameError":"Username required",
+    "title.passwordError":"Password from 8-30 characters",
+    "title.emailError":"Invalid email",
+    "title.passwordMatchError":"Passwords do not match",
+    "title.noMatchOldPassword":"New password must not match old one"
 }

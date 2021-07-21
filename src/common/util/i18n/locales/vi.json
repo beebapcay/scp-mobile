@@ -19,5 +19,10 @@
     "title.backToHome":"Trở về màn hình chính",
     "forgot.description1":"Hãy nhập vào địa chỉ email.",
     "forgot.description2":"Một email mới sẽ được gửi đến hộp thư.",
-    "forgot.description3":"Hãy làm theo hướng dẫn để được cấp mật khẩu mới"
+    "forgot.description3":"Hãy làm theo hướng dẫn để được cấp mật khẩu mới",
+    "title.usernameError":"Chưa nhập username",
+    "title.passwordError":"Mật khẩu dài từ 8-30 kí tự",
+    "title.emailError":"Email không đúng định dạng",
+    "title.passwordMatchError":"Mật khẩu không khớp nhau",
+    "title.noMatchOldPassword":"Mật khẩu mới không được giống mật khẩu cũ"
 }

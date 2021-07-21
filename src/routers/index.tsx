@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import { NativeRouter, Switch } from "react-router-native";
-import Login from "../app/auth/login";
-import { ScreenURL } from "../models/enum";
-import PublicRoute from "./PublicRoute";
-import ForgotPassword from "../app/auth/forgot-pass";
-import ResetPassword from "../app/auth/reset-pass";
-import ChangePassword from "../app/auth/change-pass";
-import Dashboard from "../common/ui/layout/dashboard-layout";
+import React, { FC } from 'react';
+import { NativeRouter, Switch } from 'react-router-native';
+import Login from '../app/auth/login';
+import { ScreenURL } from '../models/enum';
+import PublicRoute from './PublicRoute';
+import ForgotPassword from '../app/auth/forgot-pass';
+import ResetPassword from '../app/auth/reset-pass';
+import Dashboard from '../app/dashboard';
+import ChangePassword from '../app/auth/change-pass';
 import Profile from "../app/profile";
 
 interface Props {}
