@@ -17,8 +17,8 @@ export interface UserProfile {
   positions: Positions;
 }
 
-export interface UserForm {
+export interface UserFormInput {
   firstName: string;
-  lastname: string;
+  lastName: string;
   email: string;
 }

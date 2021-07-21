@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { Keyboard, TouchableWithoutFeedback, View, Text } from "react-native";
 import styles from "./style";
-import { ScopeKey, ScopeValue } from "../../../../models/enum";
 
 interface Props {
   title: string;

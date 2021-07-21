@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React, { FC } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
-import Form from "./containers/FormContainer";
 import MainLayout from "../../common/ui/layout/main-layout";
 import styles from "./style";
+import FormContainer from "./containers/FormContainer";
 
 interface Props {}
 
@@ -14,7 +14,7 @@ const Profile: FC<Props> = (props: Props) => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
-        <Form />
+        <FormContainer />
         <StatusBar style="auto" />
       </KeyboardAvoidingView>
     </MainLayout>

@@ -1,20 +1,12 @@
 import React, { FC } from "react";
 import { Text, View, Alert, TouchableOpacity } from "react-native";
 import styles from "../style";
-import { UserForm, UserProfile } from "../../../models";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../models/rootReducer";
-import { resetUserInfo, updateUserInfo } from "../slice";
-import { useEffect } from "react";
-import { validateEmail, validateName } from "../../../common/util/common";
 
 interface Props {
-  isEdit: boolean;
-  setIsEdit: Function;
-  disabled: boolean;
-  save: Function;
-  reset: Function;
+  isEdited: boolean;
+  setIsEdited: (isEdit: boolean) => void;
+  reset: () => void;
+  save: () => void;
 }
 
 const BtnContainer: FC<Props> = (props: Props) => {
@@ -31,7 +23,7 @@ const BtnContainer: FC<Props> = (props: Props) => {
           text: "Lưu",
           onPress: () => {
             props.save();
-            props.setIsEdit(!props.isEdit);
+            props.setIsEdited(!props.isEdited);
           },
         },
       ]
@@ -39,11 +31,10 @@ const BtnContainer: FC<Props> = (props: Props) => {
 
   return (
     <View style={styles.btnView}>
-      {props.isEdit ? (
+      {props.isEdited ? (
         <TouchableOpacity
           style={styles.editBtn}
           onPress={() => {
-            props.setIsEdit(!props.isEdit);
             props.reset();
           }}
         >
@@ -53,15 +44,15 @@ const BtnContainer: FC<Props> = (props: Props) => {
         <TouchableOpacity
           style={styles.editBtn}
           onPress={() => {
-            props.setIsEdit(!props.isEdit);
+            props.setIsEdited(!props.isEdited);
           }}
         >
           <Text style={styles.editBtnText}>Chỉnh sửa</Text>
         </TouchableOpacity>
       )}
       <TouchableOpacity
-        disabled={props.disabled}
-        style={props.disabled ? styles.saveBtnDisable : styles.saveBtn}
+        disabled={!props.isEdited}
+        style={!props.isEdited ? styles.saveBtnDisable : styles.saveBtn}
         onPress={() => {
           SaveAlert();
         }}
