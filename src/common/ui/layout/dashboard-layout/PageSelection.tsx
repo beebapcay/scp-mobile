@@ -57,8 +57,11 @@ const PageSelection = (props: Props) => {
     // Add pages
     const pagePos = pageIndex + 1;
     pages.push(
-      <TouchableOpacity style={internalStyle.page}
-        onPress={() => onIndexChanged(pageIndex)}>
+      <TouchableOpacity
+        style={internalStyle.page}
+        onPress={() => onIndexChanged(pageIndex)}
+        key={pageIndex}
+      >
         <Text style={internalStyle.text}>
           {pagePos}
         </Text>
