@@ -24,5 +24,15 @@
     "title.passwordError":"Mật khẩu dài từ 8-30 kí tự",
     "title.emailError":"Email không đúng định dạng",
     "title.passwordMatchError":"Mật khẩu không khớp nhau",
-    "title.noMatchOldPassword":"Mật khẩu mới không được giống mật khẩu cũ"
+    "title.noMatchOldPassword":"Mật khẩu mới không được giống mật khẩu cũ",
+    "field.firstName": "Tên",
+    "field.lastName": "Họ",
+    "field.email": "Địa chỉ Email",
+    "field.error.required": "Trường này là bắt buộc",
+    "field.error.email": "Trường này yêu cầu định dạng là email",
+    "btn.edit": "Chỉnh sửa",
+    "btn.cancel": "Huỷ",
+    "btn.save": "Lưu",
+    "alert.save.title": "Lưu thông tin",
+    "alert.save.description": "Bạn có chắc chắn lưu lại thông tin này?"
 }

@@ -12,13 +12,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../models/rootReducer";
 import { updateUserInfo } from "../slice";
 import BtnContainer from "./BtnContainer";
-import { CInputError, CInput } from "../../../common/ui/base/input";
+import { CInputError, CInput } from "../../../common/ui/base";
 import AvatarContainer from "./AvatarContainer";
 import styles from "../style";
+import { useTranslation } from "react-i18next";
 
 interface Props {}
 
 const FormContainer: FC<Props> = (props: Props) => {
+  const { t } = useTranslation();
   const {
     control,
     handleSubmit,
@@ -67,12 +69,11 @@ const FormContainer: FC<Props> = (props: Props) => {
   return (
     <View style={styles.formView}>
       <AvatarContainer isEdit={isEdited} />
-      <Text style={styles.label}>Tên: </Text>
+      <Text style={styles.label}>{t("field.firstName")}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: "Trường này là bắt buộc" },
-          pattern: { value: NAME_PATTERN, message: "Không đúng định dạng" },
+          required: { value: true, message: t("field.error.required") },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
@@ -88,12 +89,11 @@ const FormContainer: FC<Props> = (props: Props) => {
       />
       {errors.firstName && <CInputError value={errors.firstName?.message} />}
 
-      <Text style={styles.label}>Họ: </Text>
+      <Text style={styles.label}>{t("field.lastName")}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: "Trường này là bắt buộc" },
-          pattern: { value: NAME_PATTERN, message: "Không đúng định dạng" },
+          required: { value: true, message: t("field.error.required") },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
@@ -109,12 +109,12 @@ const FormContainer: FC<Props> = (props: Props) => {
       />
       {errors.lastName && <CInputError value={errors.lastName?.message} />}
 
-      <Text style={styles.label}>Địa chỉ Email: </Text>
+      <Text style={styles.label}>{t("field.email")}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: "Trường này là bắt buộc" },
-          pattern: { value: EMAIL_PATTERN, message: "Không đúng định dạng" },
+          required: { value: true, message: t("field.error.required") },
+          pattern: { value: EMAIL_PATTERN, message: t("field.error.email") },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
