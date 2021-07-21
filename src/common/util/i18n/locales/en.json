@@ -19,5 +19,15 @@
     "title.backToHome":"Back to home",
     "forgot.description1":"Please enter your email.",
     "forgot.description2":"An email will be sent to your inbox.",
-    "forgot.description3":"Please follow the instructions to reset your password"
+    "forgot.description3":"Please follow the instructions to reset your password",
+    "field.firstName": "First name",
+    "field.lastName": "Last name",
+    "field.email": "Email address",
+    "field.error.required": "This field is required",
+    "field.error.email": "This field requires email format",
+    "btn.edit": "Edit",
+    "btn.cancel": "Cancel",
+    "btn.save": "Save",
+    "alert.save.title": "Save information",
+    "alert.save.description": "Are you sure to save this information?"
 }

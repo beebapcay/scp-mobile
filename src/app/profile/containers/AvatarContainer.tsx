@@ -9,6 +9,7 @@ import * as ImagePicker from "expo-image-picker";
 import { default_avatar } from "../../../common/util/constants";
 import { Feather } from "@expo/vector-icons";
 import { updateAvatar } from "../slice";
+import { CButtonCircle } from "../../../common/ui/base";
 
 interface Props {
   isEdit: boolean;
@@ -52,15 +53,9 @@ const AvatarContainer: FC<Props> = (props: Props) => {
           />
         )}
       </View>
-      <TouchableOpacity
-        disabled={!props.isEdit}
-        onPress={pickImage}
-        style={
-          props.isEdit ? styles.editAvatarBtn : styles.editAvatarBtnDisable
-        }
-      >
+      <CButtonCircle disabled={!props.isEdit} onPress={pickImage}>
         <Feather name="edit-3" size={24} color="white" />
-      </TouchableOpacity>
+      </CButtonCircle>
     </View>
   );
 };

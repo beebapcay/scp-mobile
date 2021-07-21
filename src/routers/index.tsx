@@ -15,7 +15,6 @@ const Routers: FC<Props> = (props: Props) => {
   return (
     <NativeRouter>
       <Switch>
-        <PublicRoute exact path={ScreenURL.HOME} component={Dashboard} />
         {/* <PublicRoute exact path={ScreenURL.HOME} component={Login} /> */}
         {/* <PublicRoute exact path={ScreenURL.HOME} component={Dashboard} /> */}
         <PublicRoute exact path={ScreenURL.HOME} component={Profile} />
@@ -25,7 +24,6 @@ const Routers: FC<Props> = (props: Props) => {
           path={ScreenURL.FORGOT_PASSWORD}
           component={ForgotPassword}
         /> */}
-        />
         <PublicRoute exact path={ScreenURL.PROFILE} component={Profile} />
         {/* <PublicRoute exact path={ScreenURL.HOME} component={ResetPassword} /> */}
         {/* <PublicRoute exact path={ScreenURL.HOME} component={ChangePassword} /> */}
