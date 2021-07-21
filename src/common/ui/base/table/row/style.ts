@@ -3,8 +3,11 @@ import { Color } from "../../../../enum/enum";
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: Color.BLUE
-  }
+    flexDirection: 'row',
+  },
+  text: {
+    textAlign: 'center'
+  },
 });
 
 export default style;

@@ -1,8 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Color } from '../../../enum/enum';
-import style from './style';
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { Color } from "../../../../enum/enum";
+import style from "./style";
 
 interface Props {
   maxItemPerPage: number;

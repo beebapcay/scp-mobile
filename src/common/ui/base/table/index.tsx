@@ -1,44 +1,53 @@
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { FC, ReactElement } from 'react';
+import { ReactChild } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Color } from '../../../enum/enum';
-import TableHeader from './header/TableHeader';
-import TableRow from './row/TableRow';
+import TableHeader, { TableHeaderProps } from './header/TableHeader';
 
-interface Props {
-  columnRatio: number[];
-  headers?: ReactNode[];
-  data: ReactNode[][];
+type Child = ReactElement<TableHeaderProps>;
+type Children = Child[];
+
+interface TableProps {
+  width?: number;
+  columnRatio?: number[];
+  headers?: ReactChild[];
+  children: Children;
 }
 
-const Table = (props: Props) => {
+const Table: FC<TableProps> = (props: TableProps) => {
   // Props
-  const { headers, columnRatio, data } = props;
+  const { width, headers, columnRatio, children } = props;
 
-  // Rows
-  const rows = data.map((row: ReactNode[], index: number): JSX.Element => {
-    // Style
-    const style = StyleSheet.create({
-      rowContainer: {
-        backgroundColor: index % 2 === 0 ? 'white' : Color.LIGHT_GRAY
-      },
-    });
-
-    // Component
-    return (
-      <View style={style.rowContainer} key={index}>
-        <TableRow columnRatio={columnRatio} data={row}/>
-      </View>
-    );
-  });
+  // Style
+  const tableStyle = (width !== undefined)
+    ? StyleSheet.create({ container: { width } })
+    : StyleSheet.create({ container: {} });
 
   // Component
   return (
-    <>
-      <TableHeader headers={headers} columnRatio={columnRatio} />
-      {rows}
-    </>
+    <View style={tableStyle.container}>
+
+      {headers !== undefined &&
+        <TableHeader columnRatio={columnRatio}>
+          {headers}
+        </TableHeader>
+      }
+
+      {children.map((item: Child, index: number) => {
+        const rowStyle = StyleSheet.create({
+          container: {
+            backgroundColor: index % 2 === 0 ? Color.WHITE : Color.LIGHT_GRAY
+          },
+        });
+
+        return (
+          <View style={rowStyle.container} key={index}>
+            {item}
+          </View>
+        );
+      })}
+
+    </View>
   );
 }
-
 export default Table

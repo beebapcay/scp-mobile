@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { FC, ReactChild } from 'react';
 import { ReactNode } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import style from './style';
 
-interface Props {
-  data: ReactNode[];
-  columnRatio: number[];
+export interface TableRowProps {
+  children: ReactChild[];
+  columnRatio?: number[];
 }
 
-const TableRow = (props: Props): JSX.Element => {
+const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
   // Props
-  const { data, columnRatio } = props;
+  const { children, columnRatio } = props;
 
-  // Header columns
-  const cells: JSX.Element[] | undefined = data?.map((item: ReactNode, index: number) => {
+  // Cells
+  const cells: JSX.Element[] = children.map((item: ReactNode, index: number) => {
     // Style
     const headerStyle = StyleSheet.create({
-      textCell: {
-        flex: columnRatio[index],
+      cell: {
+        flex: columnRatio?.[index] ?? 1,
         padding: 8,
-        textAlign: 'center',
       }
     });
 
     // Component
     return (
-      <View style={headerStyle.textCell} key={index}>
-        {item}
+      <View style={headerStyle.cell} key={index}>
+        {(typeof item === 'string' || typeof item === 'number')
+          ? <Text style={style.text}>{item}</Text>
+          : { item }
+        }
       </View>
     );
   })

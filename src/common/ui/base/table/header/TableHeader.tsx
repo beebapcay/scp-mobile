@@ -1,34 +1,33 @@
-import React from 'react';
-import { ReactNode } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { FC, ReactChild, ReactNode } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import style from './style';
 
-interface Props {
-  headers?: ReactNode[];
-  columnRatio: number[];
+export interface TableHeaderProps {
+  children: ReactChild[];
+  columnRatio?: number[];
 }
 
-const TableHeader = (props: Props): JSX.Element => {
+const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
   // Props
-  const { headers, columnRatio } = props;
+  const { children, columnRatio } = props;
 
   // Header columns
-  const headerColumns: JSX.Element[] | undefined = headers?.map((item: ReactNode, index: number) => {
+  const headers: JSX.Element[] = children.map((item: ReactNode, index: number) => {
     // Style
     const headerStyle = StyleSheet.create({
-      textCell: {
-        flex: columnRatio[index],
+      cell: {
+        flex: columnRatio?.[index] ?? 1,
         padding: 8,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'white'
       }
     });
 
     // Component
     return (
-      <View style={headerStyle.textCell} key={index}>
-        {item}
+      <View style={headerStyle.cell} key={index}>
+        {(typeof item === 'string' || typeof item === 'number')
+          ? <Text style={style.text}>{item}</Text>
+          : {item}
+        }
       </View>
     );
   })
@@ -36,7 +35,7 @@ const TableHeader = (props: Props): JSX.Element => {
   // Component
   return (
     <View style={style.container}>
-      {headerColumns}
+      {headers}
     </View>
   );
 }
