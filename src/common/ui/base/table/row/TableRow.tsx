@@ -8,7 +8,7 @@ interface Props {
   columnRatio: number[];
 }
 
-const TableRow = (props: Props) => {
+const TableRow = (props: Props): JSX.Element => {
   // Props
   const { data, columnRatio } = props;
 

@@ -8,7 +8,7 @@ interface Props {
   columnRatio: number[];
 }
 
-const TableHeader = (props: Props) => {
+const TableHeader = (props: Props): JSX.Element => {
   // Props
   const { headers, columnRatio } = props;
 
