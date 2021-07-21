@@ -6,8 +6,8 @@ import PublicRoute from "./PublicRoute";
 import ForgotPassword from "../app/auth/forgot-pass";
 import ResetPassword from "../app/auth/reset-pass";
 import ChangePassword from "../app/auth/change-pass";
-import Dashboard from "../common/ui/layout/dashboard-layout";
 import Profile from "../app/profile";
+import Dashboard from "../app/dashboard";
 
 interface Props {}
 

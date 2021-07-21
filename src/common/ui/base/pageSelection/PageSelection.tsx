@@ -71,7 +71,7 @@ const PageSelection = (props: Props) => {
 
   // Component
   return (
-    <View style={style.pageSelection}>
+    <View style={style.container}>
 
       <TouchableOpacity style={style.arrowNavigation}
         onPress={onLeftArrowPressed}>
