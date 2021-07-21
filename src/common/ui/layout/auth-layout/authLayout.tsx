@@ -1,8 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
-import React, { FC, ReactNode, useEffect, useState } from 'react';
+import React, {
+  FC, ReactNode, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
-import { Keyboard, TouchableWithoutFeedback, View, Text } from 'react-native';
+import {
+  Keyboard, TouchableWithoutFeedback, View, Text,
+} from 'react-native';
 import LanguageSelectContainer from '../../../../app/auth/login/containers/languageSelectContainer';
 import styles from './authLayoutStyle';
 import { ScopeKey, ScopeValue } from '../../../../models/enum';

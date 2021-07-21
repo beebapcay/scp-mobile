@@ -1,9 +1,5 @@
-import { EMAIL_PATTERN, NAME_PATTERN } from "./constants";
+import { EMAIL_PATTERN, NAME_PATTERN } from './constants';
 
-export const validateEmail = (email: string): boolean => {
-  return EMAIL_PATTERN.test(email);
-};
+export const validateEmail = (email: string): boolean => EMAIL_PATTERN.test(email);
 
-export const validateName = (name: string): boolean => {
-  return NAME_PATTERN.test(name);
-};
+export const validateName = (name: string): boolean => NAME_PATTERN.test(name);

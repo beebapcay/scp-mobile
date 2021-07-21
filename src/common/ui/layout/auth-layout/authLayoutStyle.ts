@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FF0000'
-  }
+    color: '#FF0000',
+  },
 });
 
 export default styles;

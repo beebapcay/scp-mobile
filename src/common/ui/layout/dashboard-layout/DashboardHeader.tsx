@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import { View, Text } from "react-native";
-import style from "./style";
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
+import style from './style';
 
-export interface DashboardHeaderProps { };
+export interface DashboardHeaderProps { }
 
-const DashboardHeader: FC<DashboardHeaderProps> = (props: DashboardHeaderProps) => {
+const DashboardHeader: FC<DashboardHeaderProps> = (props: DashboardHeaderProps) =>
   // Component
-  return (
+  (
     <View style={style.headerContainer}>
       <View style={style.columnNo}>
         <Text style={style.headerTextCell}>No.</Text>
@@ -31,6 +31,4 @@ const DashboardHeader: FC<DashboardHeaderProps> = (props: DashboardHeaderProps) 
       </View>
     </View>
   );
-};
-
 export default DashboardHeader;

@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { TouchableOpacity, Text } from "react-native";
-import styles from "./style";
+import React, { FC } from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import styles from './style';
 
 interface Props {
   title: string;
@@ -9,26 +9,24 @@ interface Props {
   onPress: () => void;
 }
 
-const CButton: FC<Props> = (props: Props) => {
-  return (
-    <TouchableOpacity
-      style={
+const CButton: FC<Props> = (props: Props) => (
+  <TouchableOpacity
+    style={
         props.outline
           ? styles.outlineBtn
           : props.disabled
-          ? styles.defaultBtnDisabled
-          : styles.defaultBtn
+            ? styles.defaultBtnDisabled
+            : styles.defaultBtn
       }
-      disabled={props.disabled}
-      onPress={() => props.onPress()}
+    disabled={props.disabled}
+    onPress={() => props.onPress()}
+  >
+    <Text
+      style={props.outline ? styles.outlineBtnText : styles.defaultBtnText}
     >
-      <Text
-        style={props.outline ? styles.outlineBtnText : styles.defaultBtnText}
-      >
-        {props.title}
-      </Text>
-    </TouchableOpacity>
-  );
-};
+      {props.title}
+    </Text>
+  </TouchableOpacity>
+);
 
 export default CButton;

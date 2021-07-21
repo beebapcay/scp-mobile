@@ -1,29 +1,29 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'column',
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   topBox: {
-    width: "100%",
-    height: "20%",
+    width: '100%',
+    height: '20%',
     padding: 20,
-    backgroundColor: "#1EB2FF",
-    justifyContent: "center",
+    backgroundColor: '#1EB2FF',
+    justifyContent: 'center',
   },
   body: {
-    width: "100%",
-    height: "80%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '100%',
+    height: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 40,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    color: '#FFFFFF',
   },
 });
 

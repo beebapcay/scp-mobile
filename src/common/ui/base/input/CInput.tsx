@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import { useState } from "react";
-import { TextInput, View } from "react-native";
-import styles from "./style";
+import React, { FC, useState } from 'react';
+
+import { TextInput, View } from 'react-native';
+import styles from './style';
 
 interface Props {
   value: string;

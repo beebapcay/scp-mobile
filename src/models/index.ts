@@ -1,4 +1,4 @@
-import { Gender, Positions } from "./enum";
+import { Gender, Positions } from './enum';
 
 export interface UserProfile {
   readonly user_id: string;

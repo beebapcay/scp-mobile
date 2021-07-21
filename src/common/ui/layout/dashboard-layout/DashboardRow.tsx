@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { View, Text } from "react-native";
-import style from "./style";
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
+import style from './style';
 
 export interface DashboardRowProps {
   no: number;
@@ -10,7 +10,7 @@ export interface DashboardRowProps {
   reason: string;
   status: string;
   approver: string;
-};
+}
 
 const DashboardRow = (props: DashboardRowProps): JSX.Element => {
   // Props
@@ -21,9 +21,10 @@ const DashboardRow = (props: DashboardRowProps): JSX.Element => {
     days,
     reason,
     status,
-    approver } = props;
+    approver,
+  } = props;
 
-  //Component
+  // Component
   return (
     <View style={style.rowContainer}>
       <View style={style.columnNo}>

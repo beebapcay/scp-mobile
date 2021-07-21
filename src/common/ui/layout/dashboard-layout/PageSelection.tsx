@@ -1,6 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+
+import {
+  View, StyleSheet, Text, TouchableOpacity,
+} from 'react-native';
 import { Color } from '../../../enum/enum';
 import style from './style';
 
@@ -19,17 +21,14 @@ const PageSelection = (props: Props) => {
   // Events
   const onIndexChanged = (index: number): void => {
     setIndex(index);
-    if (onPageChanged !== undefined)
-      onPageChanged(index);
-  }
+    if (onPageChanged !== undefined) { onPageChanged(index); }
+  };
   const onLeftArrowPressed = (): void => {
-    if (index > 0)
-      onIndexChanged(index - 1);
-  }
+    if (index > 0) { onIndexChanged(index - 1); }
+  };
   const onRightArrowPressed = (): void => {
-    if (index < pageCount - 1)
-      onIndexChanged(index + 1);
-  }
+    if (index < pageCount - 1) { onIndexChanged(index + 1); }
+  };
 
   // Generate list of pages
   const pages = [];
@@ -45,13 +44,13 @@ const PageSelection = (props: Props) => {
         borderRadius: 100,
         borderColor: Color.BLUE,
         backgroundColor: index == pageIndex ? Color.BLUE : 'white',
-        borderWidth: 2
+        borderWidth: 2,
       },
       text: {
         textAlign: 'center',
         fontWeight: 'bold',
-        color: index == pageIndex ? 'white' : Color.BLUE
-      }
+        color: index == pageIndex ? 'white' : Color.BLUE,
+      },
     });
 
     // Add pages
@@ -65,7 +64,7 @@ const PageSelection = (props: Props) => {
         <Text style={internalStyle.text}>
           {pagePos}
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity>,
     );
   }
 
@@ -73,8 +72,10 @@ const PageSelection = (props: Props) => {
   return (
     <View style={style.pageSelection}>
 
-      <TouchableOpacity style={style.arrowNavigation}
-        onPress={onLeftArrowPressed}>
+      <TouchableOpacity
+        style={style.arrowNavigation}
+        onPress={onLeftArrowPressed}
+      >
         <Text style={style.arrowText}>
           {'<'}
         </Text>
@@ -82,8 +83,10 @@ const PageSelection = (props: Props) => {
 
       {pages}
 
-      <TouchableOpacity style={style.arrowNavigation}
-        onPress={onRightArrowPressed}>
+      <TouchableOpacity
+        style={style.arrowNavigation}
+        onPress={onRightArrowPressed}
+      >
         <Text style={style.arrowText}>
           {'>'}
         </Text>
@@ -91,6 +94,6 @@ const PageSelection = (props: Props) => {
 
     </View>
   );
-}
+};
 
 export default PageSelection;

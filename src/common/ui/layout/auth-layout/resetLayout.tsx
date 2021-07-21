@@ -1,6 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Keyboard, TouchableWithoutFeedback, View, Text } from 'react-native';
+import {
+  Keyboard, TouchableWithoutFeedback, View, Text,
+} from 'react-native';
 import styles from './resetLayoutStyle';
 
 interface Props {

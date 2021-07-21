@@ -1,21 +1,21 @@
-import React, { FC, useState } from "react";
-import { Text, View } from "react-native";
+import React, { FC, useState } from 'react';
+import { Text, View } from 'react-native';
 import {
   useForm,
   Controller,
   SubmitErrorHandler,
   SubmitHandler,
-} from "react-hook-form";
-import { UserFormInput, UserProfile } from "../../../models";
-import { EMAIL_PATTERN, NAME_PATTERN } from "../../../common/util/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../models/rootReducer";
-import { updateUserInfo } from "../slice";
-import BtnContainer from "./BtnContainer";
-import { CInputError, CInput } from "../../../common/ui/base";
-import AvatarContainer from "./AvatarContainer";
-import styles from "../style";
-import { useTranslation } from "react-i18next";
+} from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { UserFormInput, UserProfile } from '../../../models';
+import { EMAIL_PATTERN, NAME_PATTERN } from '../../../common/util/constants';
+import { RootState } from '../../../models/rootReducer';
+import { updateUserInfo } from '../slice';
+import BtnContainer from './BtnContainer';
+import { CInputError, CInput } from '../../../common/ui/base';
+import AvatarContainer from './AvatarContainer';
+import styles from '../style';
 
 interface Props {}
 
@@ -28,20 +28,20 @@ const FormContainer: FC<Props> = (props: Props) => {
     formState: { errors },
   } = useForm<UserFormInput>();
   const userInfo: UserProfile = useSelector(
-    (state: RootState) => state.profile.userInfo
+    (state: RootState) => state.profile.userInfo,
   );
   const dispatch = useDispatch();
 
   const [isEdited, setIsEdited] = useState<boolean>(false);
 
   const onChangeUserInfo: SubmitHandler<UserFormInput> = (
-    data: UserFormInput
+    data: UserFormInput,
   ): void => {
     if (
       !(
-        data.firstName === userInfo?.first_name &&
-        data.lastName === userInfo?.last_name &&
-        data.email === userInfo?.email
+        data.firstName === userInfo?.first_name
+        && data.lastName === userInfo?.last_name
+        && data.email === userInfo?.email
       )
     ) {
       setIsEdited(false);
@@ -59,9 +59,9 @@ const FormContainer: FC<Props> = (props: Props) => {
 
   const resetInfo = (): void => {
     if (userInfo) {
-      setValue("lastName", userInfo.last_name);
-      setValue("firstName", userInfo.first_name);
-      setValue("email", userInfo.email);
+      setValue('lastName', userInfo.last_name);
+      setValue('firstName', userInfo.first_name);
+      setValue('email', userInfo.email);
       setIsEdited(false);
     }
   };
@@ -69,11 +69,11 @@ const FormContainer: FC<Props> = (props: Props) => {
   return (
     <View style={styles.formView}>
       <AvatarContainer isEdit={isEdited} />
-      <Text style={styles.label}>{t("field.firstName")}</Text>
+      <Text style={styles.label}>{t('field.firstName')}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: t("field.error.required") },
+          required: { value: true, message: t('field.error.required') },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
@@ -89,11 +89,11 @@ const FormContainer: FC<Props> = (props: Props) => {
       />
       {errors.firstName && <CInputError value={errors.firstName?.message} />}
 
-      <Text style={styles.label}>{t("field.lastName")}</Text>
+      <Text style={styles.label}>{t('field.lastName')}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: t("field.error.required") },
+          required: { value: true, message: t('field.error.required') },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
@@ -109,12 +109,12 @@ const FormContainer: FC<Props> = (props: Props) => {
       />
       {errors.lastName && <CInputError value={errors.lastName?.message} />}
 
-      <Text style={styles.label}>{t("field.email")}</Text>
+      <Text style={styles.label}>{t('field.email')}</Text>
       <Controller
         control={control}
         rules={{
-          required: { value: true, message: t("field.error.required") },
-          pattern: { value: EMAIL_PATTERN, message: t("field.error.email") },
+          required: { value: true, message: t('field.error.required') },
+          pattern: { value: EMAIL_PATTERN, message: t('field.error.email') },
         }}
         render={({ field: { onChange, value } }) => (
           <CInput
