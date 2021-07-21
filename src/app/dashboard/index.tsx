@@ -4,16 +4,16 @@ import { Text, View } from 'react-native';
 import { ScreenURL } from '../../models/enum';
 import styles from './style';
 
-interface Props { };
+interface Props { }
 
-const Dashboard=(props) => {
-  props.history.push(ScreenURL.LOGIN)
+const Dashboard = (props) => {
+  props.history.push(ScreenURL.LOGIN);
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
-  )
-}
+  );
+};
 
 export default Dashboard;
