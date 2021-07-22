@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   topBox: {
-    width: '100%',
-    height: '20%',
-    padding: 20,
-    backgroundColor: '#1EB2FF',
-    justifyContent: 'center',
+    paddingLeft: 20,
+    width: "100%",
+    height: "20%",
+    backgroundColor: "#1EB2FF",
+    justifyContent: "center",
   },
   body: {
     width: '100%',

@@ -5,17 +5,17 @@ import {
   Controller,
   SubmitErrorHandler,
   SubmitHandler,
-} from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { UserFormInput, UserProfile } from '../../../models';
-import { EMAIL_PATTERN, NAME_PATTERN } from '../../../common/util/constants';
-import { RootState } from '../../../models/rootReducer';
-import { updateUserInfo } from '../slice';
-import BtnContainer from './BtnContainer';
-import { CInputError, CInput } from '../../../common/ui/base';
-import AvatarContainer from './AvatarContainer';
-import styles from '../style';
+} from "react-hook-form";
+import { UserFormInput, UserProfile } from "../../../models";
+import { EMAIL_PATTERN } from "../../../common/util/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../models/rootReducer";
+import { updateUserInfo } from "../slice";
+import BtnContainer from "./BtnContainer";
+import { CInputError, CInput } from "../../../common/ui/base";
+import AvatarContainer from "./AvatarContainer";
+import styles from "../style";
+import { useTranslation } from "react-i18next";
 
 interface Props {}
 

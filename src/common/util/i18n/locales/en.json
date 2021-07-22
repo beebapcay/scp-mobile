@@ -39,5 +39,7 @@
     "btn.cancel": "Cancel",
     "btn.save": "Save",
     "alert.save.title": "Save information",
-    "alert.save.description": "Are you sure to save this information?"
+    "alert.save.description": "Are you sure to save this information?",
+    "label.changePass": "Change password",
+    "label.logout": "Logout"
 }

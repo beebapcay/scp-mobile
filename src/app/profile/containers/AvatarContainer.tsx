@@ -53,9 +53,11 @@ const AvatarContainer: FC<Props> = (props: Props) => {
           />
         )}
       </View>
-      <CButtonCircle disabled={!props.isEdit} onPress={pickImage}>
-        <Feather name="edit-3" size={24} color="white" />
-      </CButtonCircle>
+      <View style={styles.editAvatarBtn}>
+        <CButtonCircle disabled={!props.isEdit} onPress={pickImage}>
+          <Feather name="edit-3" size={24} color="white" />
+        </CButtonCircle>
+      </View>
     </View>
   );
 };
