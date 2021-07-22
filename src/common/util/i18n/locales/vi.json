@@ -29,5 +29,8 @@
     "btn.cancel": "Huỷ",
     "btn.save": "Lưu",
     "alert.save.title": "Lưu thông tin",
-    "alert.save.description": "Bạn có chắc chắn lưu lại thông tin này?"
+    "alert.save.description": "Bạn có chắc chắn lưu lại thông tin này?",
+    "label.changePass": "Đổi mật khẩu",
+    "label.logout": "Đăng xuất"
+
 }

@@ -1,14 +1,15 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { ReloadInstructions } from "react-native/Libraries/NewAppScreen";
 
 const styles = StyleSheet.create({
-  container: {},
-  header: {},
+  container: {
+    padding: 8,
+  },
   headerText: {
     fontSize: 30,
     fontWeight: "500",
     color: "#1eb2ff",
   },
-
   avatarContainer: {
     position: "relative",
     alignItems: "center",
@@ -44,55 +45,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
   },
-  editBtn: {
-    width: 100,
-    borderWidth: 1,
-    padding: 8,
-    alignItems: "center",
-    borderColor: "#1eb2ff",
-  },
-  editBtnText: {
-    color: "#1eb2ff",
-  },
-  saveBtn: {
-    width: 100,
-    padding: 8,
-    marginLeft: 10,
-    alignItems: "center",
-    backgroundColor: "#1eb2ff",
-  },
-  saveBtnDisable: {
-    width: 100,
-    padding: 8,
-    marginLeft: 10,
-    alignItems: "center",
-    backgroundColor: "#1eb2ff",
-    opacity: 0.6,
-  },
-  saveBtnText: {
-    color: "white",
-  },
   editAvatarBtn: {
-    backgroundColor: "#1eb2ff",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
     position: "absolute",
     right: "25%",
     top: "5%",
   },
-  editAvatarBtnDisable: {
-    backgroundColor: "#78d1ff",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
+  settingContainer: { flex: 1 },
+  settingView: {
     position: "absolute",
-    right: "25%",
-    top: "5%",
+    right: 20,
+    top: "26%",
+    backgroundColor: "white",
+    elevation: 5,
+  },
+  menuSettingView: {
+    padding: 8,
+    justifyContent: "space-around",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 

@@ -60,9 +60,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
-    position: "absolute",
-    right: "25%",
-    top: "5%",
   },
   circleBtnDisabled: {
     backgroundColor: "#1eb2ff",
@@ -72,9 +69,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
-    position: "absolute",
-    right: "25%",
-    top: "5%",
   }
 });
 

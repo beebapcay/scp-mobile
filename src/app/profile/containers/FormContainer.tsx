@@ -7,7 +7,7 @@ import {
   SubmitHandler,
 } from "react-hook-form";
 import { UserFormInput, UserProfile } from "../../../models";
-import { EMAIL_PATTERN, NAME_PATTERN } from "../../../common/util/constants";
+import { EMAIL_PATTERN } from "../../../common/util/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../models/rootReducer";
 import { updateUserInfo } from "../slice";
