@@ -10,6 +10,7 @@ import { email_reg } from '../../../common/util/constants';
 import ButtonContainer from './btnContainer';
 import CompleteComponent from '../../../common/ui/layout/auth-layout/completeComponent';
 import ResetLayout from '../../../common/ui/layout/auth-layout/resetLayout';
+import { ScreenURL } from '../../../models/enum';
 
 interface Props extends RouteComponentProps<any> {}
 interface SubmitObject {

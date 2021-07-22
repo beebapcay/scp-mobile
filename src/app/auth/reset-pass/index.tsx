@@ -49,7 +49,7 @@ const ResetPassword: FC<Props> = (props: Props) => {
 
   const handleBackPress = (): void => {
     setResetComplete(false);
-    props.history.push(ScreenURL.LOGIN);
+    props.history.push(ScreenURL.HOME);
   };
 
   return (

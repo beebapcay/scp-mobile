@@ -1,12 +1,12 @@
-import { StyleSheet } from "react-native";
-import { Color } from "../../../../enum/enum";
+import { StyleSheet } from 'react-native';
+import { Color } from '../../../../enum/enum';
 
 const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
   },
   text: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });
 

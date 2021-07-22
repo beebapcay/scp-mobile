@@ -18,7 +18,7 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
       cell: {
         flex: columnRatio?.[index] ?? 1,
         padding: 8,
-      }
+      },
     });
 
     // Component
@@ -26,11 +26,10 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
       <View style={headerStyle.cell} key={index}>
         {(typeof item === 'string' || typeof item === 'number')
           ? <Text style={style.text}>{item}</Text>
-          : {item}
-        }
+          : { item }}
       </View>
     );
-  })
+  });
 
   // Component
   return (
@@ -38,6 +37,6 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
       {headers}
     </View>
   );
-}
+};
 
 export default TableHeader;

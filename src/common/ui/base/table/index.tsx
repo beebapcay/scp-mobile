@@ -1,5 +1,5 @@
-import React, { FC, ReactElement } from 'react';
-import { ReactChild } from 'react';
+import React, { FC, ReactElement, ReactChild } from 'react';
+
 import { View, StyleSheet } from 'react-native';
 import { Color } from '../../../enum/enum';
 import TableHeader, { TableHeaderProps } from './header/TableHeader';
@@ -16,7 +16,9 @@ interface TableProps {
 
 const Table: FC<TableProps> = (props: TableProps) => {
   // Props
-  const { width, headers, columnRatio, children } = props;
+  const {
+    width, headers, columnRatio, children,
+  } = props;
 
   // Style
   const tableStyle = (width !== undefined)
@@ -27,16 +29,17 @@ const Table: FC<TableProps> = (props: TableProps) => {
   return (
     <View style={tableStyle.container}>
 
-      {headers !== undefined &&
+      {headers !== undefined
+        && (
         <TableHeader columnRatio={columnRatio}>
           {headers}
         </TableHeader>
-      }
+        )}
 
       {children.map((item: Child, index: number) => {
         const rowStyle = StyleSheet.create({
           container: {
-            backgroundColor: index % 2 === 0 ? Color.WHITE : Color.LIGHT_GRAY
+            backgroundColor: index % 2 === 0 ? Color.WHITE : Color.LIGHT_GRAY,
           },
         });
 
@@ -49,5 +52,5 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
     </View>
   );
-}
-export default Table
+};
+export default Table;

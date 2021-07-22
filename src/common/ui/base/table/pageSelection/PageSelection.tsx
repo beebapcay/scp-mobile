@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import {
+  StyleSheet, TouchableOpacity, View, Text,
+} from 'react-native';
 import { Color } from '../../../../enum/enum';
 import style from './style';
 
@@ -65,7 +67,7 @@ const PageSelection = (props: Props) => {
         key={pageIndex}
       >
         <Text style={internalStyle.text}>{pagePos}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>,
     );
   }
 

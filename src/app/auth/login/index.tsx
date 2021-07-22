@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { TouchableHighlight, Text } from 'react-native';
+import { TouchableHighlight, Text, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
@@ -30,17 +30,21 @@ const Login: FC<Props> = (props: Props) => {
   } = useForm({ reValidateMode: 'onSubmit' });
 
   const handleLoginPress = (loginInfo: LoginInfoObject): void => {
-    reset({
-      email: '',
-      password: '',
-    });
-    // AsyncStorage.setItem(ScopeKey.IS_AUTHENTICATED,ScopeValue.TRUE)
-    // const next = props.location.search.split("=")
-    // if (next.length==2){
-    //     console.log(next[1])
-    //     props.history.push(`${next[1]}`)
-    // }
-    // else props.history.push(ScreenURL.HOME)
+    if (loginInfo.username !== 'test' || loginInfo.password !== '12345678') {
+      Alert.alert(`${t('title.error')}`, `${t('title.loginError')}`, [
+        {
+          text: `${t('title.ok')}`,
+          onPress: () => {},
+          style: 'cancel',
+        },
+      ]);
+    } else {
+      reset({
+        username: '',
+        password: '',
+      });
+      props.history.push(ScreenURL.DASHBOARD);
+    }
   };
 
   const handleRegisterPress = (): void => {

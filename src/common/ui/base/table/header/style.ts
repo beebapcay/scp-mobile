@@ -1,16 +1,16 @@
-import { StyleSheet } from "react-native";
-import { Color } from "../../../../enum/enum";
+import { StyleSheet } from 'react-native';
+import { Color } from '../../../../enum/enum';
 
 const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: Color.BLUE
+    backgroundColor: Color.BLUE,
   },
   text: {
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'white'
-  }
+    color: 'white',
+  },
 });
 
 export default style;
