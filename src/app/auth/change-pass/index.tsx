@@ -1,70 +1,86 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { View } from "react-native";
-import styles from "../../../common/ui/layout/card-view-layout/style";
-import { MaterialCommunityIcons } from "react-native-vector-icons";
-import ChangePasswordContainer from "./containers/changePasswordContainer";
-import { ScreenURL } from "../../../models/enum";
-import { changePasswordCheck } from "../../../common/util/common";
-import ResetComplete from "../../../common/ui/layout/card-view-layout/resetComplete";
-import { RouteComponentProps } from "react-router-native";
-import CardViewLayout from "../../../common/ui/layout/card-view-layout";
+import React, { FC, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { View, Text, Alert } from 'react-native';
+import { Controller, useForm } from 'react-hook-form';
+import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import { RouteComponentProps } from 'react-router-native';
+import styles from '../../../common/ui/layout/auth-layout/resetLayoutStyle';
+import { ScreenURL } from '../../../models/enum';
+import CompleteComponent from '../../../common/ui/layout/auth-layout/completeComponent';
+import ResetLayout from '../../../common/ui/layout/auth-layout/resetLayout';
+import PasswordTextInput from '../../../common/ui/base/textInput/passwordTextInput';
+import ButtonContainer from '../forgot-pass/btnContainer';
 
 interface Props extends RouteComponentProps<any> {}
-const ChangePassword = (props: Props) => {
+const ChangePassword: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
-  const [oldPassword, setOldPassword] = useState<string>("");
-  const [newPassword, setNewPassword] = useState<string>("");
-  const [newConfirmPassword, setNewConfirmPassword] = useState<string>("");
-  const [oldVisible, setOldVisible] = useState<boolean>(true);
-  const [newVisible, setNewVisible] = useState<boolean>(true);
-  const [confirmVisible, setConfirmVisible] = useState<boolean>(true);
+  const [oldSecure, setOldSecure] = useState<boolean>(true);
+  const [newSecure, setNewSecure] = useState<boolean>(true);
+  const [confirmSecure, setConfirmSecure] = useState<boolean>(true);
   const [resetComplete, setResetComplete] = useState<boolean>(false);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+  } = useForm({ reValidateMode: 'onSubmit' });
+  const oldPassword = useRef();
+  const newPassword = useRef();
+  oldPassword.current = watch('oldPassword', '');
+  newPassword.current = watch('newPassword', '');
 
   const handleSendPress = (): void => {
-    if (changePasswordCheck(oldPassword, newPassword, newConfirmPassword)) {
+    if (oldPassword.current !== '12345678') {
+      Alert.alert(`${t('title.error')}`, `${t('title.oldPasswordError')}`, [
+        {
+          text: `${t('title.ok')}`,
+          onPress: () => {},
+          style: 'cancel',
+        },
+      ]);
+    } else {
       setResetComplete(true);
+      oldPassword.current = undefined;
+      newPassword.current = undefined;
+      reset({
+        oldPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
+      props.history.goBack();
     }
   };
 
-  const handleOldPasswordChange = (data: string): void => {
-    setOldPassword(data);
-  };
-
-  const handleNewPasswordChange = (data: string): void => {
-    setNewPassword(data);
-  };
-
-  const handleConfirmPasswordChange = (data: string): void => {
-    setNewConfirmPassword(data);
-  };
-
   const handleOldVisibleChange = (): void => {
-    setOldVisible(!oldVisible);
+    setOldSecure(!oldSecure);
   };
 
   const handleNewVisibleChange = (): void => {
-    setNewVisible(!newVisible);
+    setNewSecure(!newSecure);
   };
 
   const handleConfirmVisible = (): void => {
-    setConfirmVisible(!confirmVisible);
+    setConfirmSecure(!confirmSecure);
   };
 
   const handleBackPress = (): void => {
     setResetComplete(false);
-    setOldPassword("");
-    setNewPassword("");
-    setNewConfirmPassword("");
-    setOldVisible(true);
-    setNewVisible(true);
-    setConfirmVisible(true);
-    props.history.push(ScreenURL.HOME);
+    setOldSecure(true);
+    setNewSecure(true);
+    setConfirmSecure(true);
+    props.history.goBack();
   };
 
-  const completeChange = (): JSX.Element => {
-    if (resetComplete === false) {
-      return (
+  return (
+    <ResetLayout titleKey="title.changePassword">
+      {resetComplete ? (
+        <CompleteComponent
+          completeText={t('title.changePasswordCompleted')}
+          backText={t('title.backToProfile')}
+          onBackPress={handleBackPress}
+        />
+      ) : (
         <>
           <MaterialCommunityIcons
             name="lock-reset"
@@ -73,36 +89,92 @@ const ChangePassword = (props: Props) => {
             style={styles.image}
           />
           <View style={styles.passwordContainer}>
-            <ChangePasswordContainer
-              onOldPasswordChange={handleOldPasswordChange}
-              onNewPasswordChange={handleNewPasswordChange}
-              onConfirmPasswordChange={handleConfirmPasswordChange}
-              onOldVisibleChange={handleOldVisibleChange}
-              onNewVisibleChange={handleNewVisibleChange}
-              onConfirmVisibleChange={handleConfirmVisible}
-              oldVisible={oldVisible}
-              newVisible={newVisible}
-              confirmVisible={confirmVisible}
-              sendPress={handleSendPress}
-              title={t("title.confirmChangePassword")}
-              backPress={handleBackPress}
-              backTitle={t("title.backToHome")}
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+                minLength: 8,
+                maxLength: 30,
+              }}
+              render={({ field: { onChange } }) => (
+                <PasswordTextInput
+                  placeholder={t('title.oldPassword')}
+                  icon="key"
+                  onTextChange={onChange}
+                  onVisibleChange={handleOldVisibleChange}
+                  secure={oldSecure}
+                />
+              )}
+              name="oldPassword"
+              defaultValue=""
+            />
+            {errors.oldPassword && (
+              <Text style={styles.errorText}>{t('title.passwordError')}</Text>
+            )}
+
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+                minLength: 8,
+                maxLength: 30,
+                validate: (value) => value !== oldPassword.current,
+              }}
+              render={({ field: { onChange } }) => (
+                <PasswordTextInput
+                  placeholder={t('title.newPassword')}
+                  icon="key"
+                  onTextChange={onChange}
+                  onVisibleChange={handleNewVisibleChange}
+                  secure={newSecure}
+                />
+              )}
+              name="newPassword"
+              defaultValue=""
+            />
+            {errors.newPassword && (
+              <Text style={styles.errorText}>
+                {t('title.noMatchOldPassword')}
+              </Text>
+            )}
+
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+                minLength: 8,
+                maxLength: 30,
+                validate: (value) => value === newPassword.current,
+              }}
+              render={({ field: { onChange } }) => (
+                <PasswordTextInput
+                  placeholder={t('title.confirmNewPassword')}
+                  icon="key"
+                  onTextChange={onChange}
+                  onVisibleChange={handleConfirmVisible}
+                  secure={confirmSecure}
+                />
+              )}
+              name="confirmPassword"
+              defaultValue=""
+            />
+            {errors.confirmPassword && (
+              <Text style={styles.errorText}>
+                {t('title.passwordMatchError')}
+              </Text>
+            )}
+
+            <ButtonContainer
+              onSendPress={handleSubmit(handleSendPress)}
+              onBackPress={handleBackPress}
+              title={t('title.confirmChangePassword')}
+              backTitle={t('title.backToProfile')}
             />
           </View>
         </>
-      );
-    } else {
-      return (
-        <ResetComplete
-          completeText={t("title.changePasswordCompleted")}
-          backText={t("title.backToHome")}
-          onBackPress={handleBackPress}
-        />
-      );
-    }
-  };
-
-  return <CardViewLayout>{completeChange()}</CardViewLayout>;
+      )}
+    </ResetLayout>
+  );
 };
 
 export default ChangePassword;

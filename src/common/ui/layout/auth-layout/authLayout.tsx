@@ -1,22 +1,26 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import i18next from "i18next";
-import React, { ReactNode, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Keyboard, TouchableWithoutFeedback, View, Text } from "react-native";
-import LanguageSelectContainer from "../../../../app/auth/login/containers/languageSelectContainer";
-import styles from "./style";
-import { ScopeKey, ScopeValue } from "../../../../models/enum";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import i18next from 'i18next';
+import React, {
+  FC, ReactNode, useEffect, useState,
+} from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  Keyboard, TouchableWithoutFeedback, View, Text,
+} from 'react-native';
+import LanguageSelectContainer from '../../../../app/auth/login/containers/languageSelectContainer';
+import styles from './authLayoutStyle';
+import { ScopeKey, ScopeValue } from '../../../../models/enum';
 
 interface Props {
   children: ReactNode;
 }
-const LoginLayout = (props: Props) => {
+const AuthLayout: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState<string>("");
+  const [lang, setLang] = useState<string>('');
 
   const getLang = async (): Promise<void> => {
-    if (lang === "") {
-      let str = await AsyncStorage.getItem(ScopeKey.LANG);
+    if (lang === '') {
+      const str = await AsyncStorage.getItem(ScopeKey.LANG);
       if (str === null || str === ScopeValue.VIE) setLang(ScopeValue.VIE);
       else setLang(ScopeValue.ENG);
       await AsyncStorage.setItem(ScopeKey.LANG, lang);
@@ -42,7 +46,7 @@ const LoginLayout = (props: Props) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.topBox}>
-          <Text style={styles.title}>{t("title.login")}</Text>
+          <Text style={styles.title}>{t('title.login')}</Text>
         </View>
         <View style={styles.body}>{props.children}</View>
         <View style={styles.bottomBox} />
@@ -55,4 +59,4 @@ const LoginLayout = (props: Props) => {
   );
 };
 
-export default LoginLayout;
+export default AuthLayout;

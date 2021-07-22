@@ -1,26 +1,27 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { ReloadInstructions } from "react-native/Libraries/NewAppScreen";
 
+
 const styles = StyleSheet.create({
   container: {
     padding: 8,
   },
   headerText: {
     fontSize: 30,
-    fontWeight: "500",
-    color: "#1eb2ff",
+    fontWeight: '500',
+    color: '#1eb2ff',
   },
   avatarContainer: {
-    position: "relative",
-    alignItems: "center",
+    position: 'relative',
+    alignItems: 'center',
   },
   avatar: {
     width: 200,
     height: 200,
     borderRadius: 200,
     borderWidth: 2,
-    borderColor: "#1eb2ff",
-    overflow: "hidden",
+    borderColor: '#1eb2ff',
+    overflow: 'hidden',
     marginVertical: 5,
   },
   nameText: {
@@ -28,22 +29,22 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   formView: {
-    width: Dimensions.get("screen").width - 40,
+    width: Dimensions.get('screen').width - 40,
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 10,
     elevation: 5,
   },
   infoContainer: {
-    width: "100%",
+    width: '100%',
   },
   label: {
     marginBottom: 6,
-    color: "#5e6c84",
+    color: '#5e6c84',
   },
   btnView: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   editAvatarBtn: {
     position: "absolute",

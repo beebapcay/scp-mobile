@@ -1,7 +1,7 @@
-import CInput from "./CInput";
-import CInputError from './CInputError'
+import CInput from './CInput';
+import CInputError from './CInputError';
 
 export {
   CInput,
   CInputError,
-}
+};

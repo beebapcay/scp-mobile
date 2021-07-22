@@ -1,7 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Color } from '../../../enum/enum';
+import React, { useState } from 'react';
+import {
+  StyleSheet, TouchableOpacity, View, Text,
+} from 'react-native';
+import { Color } from '../../../../enum/enum';
 import style from './style';
 
 interface Props {
@@ -19,17 +20,20 @@ const PageSelection = (props: Props) => {
   // Events
   const onIndexChanged = (index: number): void => {
     setIndex(index);
-    if (onPageChanged !== undefined)
+    if (onPageChanged !== undefined) {
       onPageChanged(index);
-  }
+    }
+  };
   const onLeftArrowPressed = (): void => {
-    if (index > 0)
+    if (index > 0) {
       onIndexChanged(index - 1);
-  }
+    }
+  };
   const onRightArrowPressed = (): void => {
-    if (index < pageCount - 1)
+    if (index < pageCount - 1) {
       onIndexChanged(index + 1);
-  }
+    }
+  };
 
   // Generate list of pages
   const pages = [];
@@ -45,13 +49,13 @@ const PageSelection = (props: Props) => {
         borderRadius: 100,
         borderColor: Color.BLUE,
         backgroundColor: index == pageIndex ? Color.BLUE : 'white',
-        borderWidth: 2
+        borderWidth: 2,
       },
       text: {
         textAlign: 'center',
         fontWeight: 'bold',
-        color: index == pageIndex ? 'white' : Color.BLUE
-      }
+        color: index == pageIndex ? 'white' : Color.BLUE,
+      },
     });
 
     // Add pages
@@ -62,35 +66,31 @@ const PageSelection = (props: Props) => {
         onPress={() => onIndexChanged(pageIndex)}
         key={pageIndex}
       >
-        <Text style={internalStyle.text}>
-          {pagePos}
-        </Text>
-      </TouchableOpacity>
+        <Text style={internalStyle.text}>{pagePos}</Text>
+      </TouchableOpacity>,
     );
   }
 
   // Component
   return (
-    <View style={style.pageSelection}>
-
-      <TouchableOpacity style={style.arrowNavigation}
-        onPress={onLeftArrowPressed}>
-        <Text style={style.arrowText}>
-          {'<'}
-        </Text>
+    <View style={style.container}>
+      <TouchableOpacity
+        style={style.arrowNavigation}
+        onPress={onLeftArrowPressed}
+      >
+        <Text style={style.arrowText}>{'<'}</Text>
       </TouchableOpacity>
 
       {pages}
 
-      <TouchableOpacity style={style.arrowNavigation}
-        onPress={onRightArrowPressed}>
-        <Text style={style.arrowText}>
-          {'>'}
-        </Text>
+      <TouchableOpacity
+        style={style.arrowNavigation}
+        onPress={onRightArrowPressed}
+      >
+        <Text style={style.arrowText}>{'>'}</Text>
       </TouchableOpacity>
-
     </View>
   );
-}
+};
 
 export default PageSelection;

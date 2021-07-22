@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'column',
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   topBox: {
     paddingLeft: 20,
@@ -15,15 +15,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   body: {
-    width: "100%",
-    height: "80%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '100%',
+    height: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 40,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    color: '#FFFFFF',
   },
 });
 

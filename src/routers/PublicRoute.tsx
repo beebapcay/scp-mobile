@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { RouteProps, Route } from "react-router-native";
-import { ScreenURL } from "../models/enum";
+import React, { FC } from 'react';
+import { RouteProps, Route } from 'react-router-native';
+import { ScreenURL } from '../models/enum';
 
 interface Props extends RouteProps {
   path: ScreenURL;

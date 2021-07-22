@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   editInput: {
@@ -6,34 +6,34 @@ const styles = StyleSheet.create({
   },
   unfocusInput: {
     height: 40,
-    width: "100%",
+    width: '100%',
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: "#dfe1e6",
+    borderColor: '#dfe1e6',
   },
   focusInput: {
     height: 40,
-    width: "100%",
+    width: '100%',
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: "#1eb2ff",
+    borderColor: '#1eb2ff',
   },
   invalidInput: {
     height: 40,
-    width: "100%",
+    width: '100%',
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: 'red',
   },
   errorView: {
-    marginBottom: 8
+    marginBottom: 8,
   },
   errorText: {
     color: 'red',
-  }
+  },
 });
 
 export default styles;
