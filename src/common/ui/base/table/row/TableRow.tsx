@@ -1,5 +1,5 @@
-import React, { FC, ReactChild } from 'react';
-import { ReactNode } from 'react';
+import React, { FC, ReactChild, ReactNode } from 'react';
+
 import { View, StyleSheet, Text } from 'react-native';
 import style from './style';
 
@@ -19,7 +19,7 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
       cell: {
         flex: columnRatio?.[index] ?? 1,
         padding: 8,
-      }
+      },
     });
 
     // Component
@@ -27,11 +27,10 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
       <View style={headerStyle.cell} key={index}>
         {(typeof item === 'string' || typeof item === 'number')
           ? <Text style={style.text}>{item}</Text>
-          : { item }
-        }
+          : { item }}
       </View>
     );
-  })
+  });
 
   // Component
   return (
@@ -39,6 +38,6 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
       {cells}
     </View>
   );
-}
+};
 
 export default TableRow;

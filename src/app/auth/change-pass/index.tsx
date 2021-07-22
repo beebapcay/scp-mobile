@@ -1,6 +1,6 @@
 import React, { FC, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { RouteComponentProps } from 'react-router-native';
@@ -31,14 +31,25 @@ const ChangePassword: FC<Props> = (props: Props) => {
   newPassword.current = watch('newPassword', '');
 
   const handleSendPress = (): void => {
-    setResetComplete(true);
-    oldPassword.current = undefined;
-    newPassword.current = undefined;
-    reset({
-      oldPassword: '',
-      newPassword: '',
-      confirmPassword: '',
-    });
+    if (oldPassword.current !== '12345678') {
+      Alert.alert(`${t('title.error')}`, `${t('title.oldPasswordError')}`, [
+        {
+          text: `${t('title.ok')}`,
+          onPress: () => {},
+          style: 'cancel',
+        },
+      ]);
+    } else {
+      setResetComplete(true);
+      oldPassword.current = undefined;
+      newPassword.current = undefined;
+      reset({
+        oldPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
+      props.history.goBack();
+    }
   };
 
   const handleOldVisibleChange = (): void => {
@@ -58,7 +69,7 @@ const ChangePassword: FC<Props> = (props: Props) => {
     setOldSecure(true);
     setNewSecure(true);
     setConfirmSecure(true);
-    props.history.push(ScreenURL.HOME);
+    props.history.goBack();
   };
 
   return (
@@ -66,7 +77,7 @@ const ChangePassword: FC<Props> = (props: Props) => {
       {resetComplete ? (
         <CompleteComponent
           completeText={t('title.changePasswordCompleted')}
-          backText={t('title.backToHome')}
+          backText={t('title.backToProfile')}
           onBackPress={handleBackPress}
         />
       ) : (
@@ -157,7 +168,7 @@ const ChangePassword: FC<Props> = (props: Props) => {
               onSendPress={handleSubmit(handleSendPress)}
               onBackPress={handleBackPress}
               title={t('title.confirmChangePassword')}
-              backTitle={t('title.backToLogin')}
+              backTitle={t('title.backToProfile')}
             />
           </View>
         </>
