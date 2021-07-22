@@ -1,6 +1,5 @@
-import { Dimensions, StyleSheet } from "react-native";
-import { ReloadInstructions } from "react-native/Libraries/NewAppScreen";
-
+import { Dimensions, StyleSheet } from 'react-native';
+import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -47,23 +46,23 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   editAvatarBtn: {
-    position: "absolute",
-    right: "25%",
-    top: "5%",
+    position: 'absolute',
+    right: '25%',
+    top: '5%',
   },
   settingContainer: { flex: 1 },
   settingView: {
-    position: "absolute",
+    position: 'absolute',
     right: 20,
-    top: "26%",
-    backgroundColor: "white",
+    top: '26%',
+    backgroundColor: 'white',
     elevation: 5,
   },
   menuSettingView: {
     padding: 8,
-    justifyContent: "space-around",
-    alignItems: "center",
-    shadowColor: "#000",
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -78,19 +77,19 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: '#F194FF',
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });
 

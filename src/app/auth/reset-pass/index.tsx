@@ -26,7 +26,7 @@ const ResetPassword: FC<Props> = (props: Props) => {
     formState: { errors },
     watch,
     reset,
-  } = useForm();
+  } = useForm({ reValidateMode: 'onSubmit' });
   const password = useRef();
   password.current = watch('password', '');
 
