@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Color } from "../../../enum/enum";
+import { Color } from "../../../../enum/enum";
 
 const style = StyleSheet.create({
   container: {

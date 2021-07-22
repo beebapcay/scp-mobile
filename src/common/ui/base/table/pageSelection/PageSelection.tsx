@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-
-import {
-  View, StyleSheet, Text, TouchableOpacity,
-} from 'react-native';
-import { Color } from '../../../enum/enum';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { Color } from '../../../../enum/enum';
 import style from './style';
 
 interface Props {
@@ -21,13 +18,19 @@ const PageSelection = (props: Props) => {
   // Events
   const onIndexChanged = (index: number): void => {
     setIndex(index);
-    if (onPageChanged !== undefined) { onPageChanged(index); }
+    if (onPageChanged !== undefined) {
+      onPageChanged(index);
+    }
   };
   const onLeftArrowPressed = (): void => {
-    if (index > 0) { onIndexChanged(index - 1); }
+    if (index > 0) {
+      onIndexChanged(index - 1);
+    }
   };
   const onRightArrowPressed = (): void => {
-    if (index < pageCount - 1) { onIndexChanged(index + 1); }
+    if (index < pageCount - 1) {
+      onIndexChanged(index + 1);
+    }
   };
 
   // Generate list of pages
@@ -61,24 +64,19 @@ const PageSelection = (props: Props) => {
         onPress={() => onIndexChanged(pageIndex)}
         key={pageIndex}
       >
-        <Text style={internalStyle.text}>
-          {pagePos}
-        </Text>
-      </TouchableOpacity>,
+        <Text style={internalStyle.text}>{pagePos}</Text>
+      </TouchableOpacity>
     );
   }
 
   // Component
   return (
     <View style={style.container}>
-
       <TouchableOpacity
         style={style.arrowNavigation}
         onPress={onLeftArrowPressed}
       >
-        <Text style={style.arrowText}>
-          {'<'}
-        </Text>
+        <Text style={style.arrowText}>{'<'}</Text>
       </TouchableOpacity>
 
       {pages}
@@ -87,11 +85,8 @@ const PageSelection = (props: Props) => {
         style={style.arrowNavigation}
         onPress={onRightArrowPressed}
       >
-        <Text style={style.arrowText}>
-          {'>'}
-        </Text>
+        <Text style={style.arrowText}>{'>'}</Text>
       </TouchableOpacity>
-
     </View>
   );
 };
