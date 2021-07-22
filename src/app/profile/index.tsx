@@ -2,12 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import React, { FC, useState } from "react";
 import {
   KeyboardAvoidingView,
-  Platform,
   View,
   Modal,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Dimensions,
+  Platform,
 } from "react-native";
 import MainLayout from "../../common/ui/layout/main-layout";
 import styles from "./style";
@@ -24,15 +25,15 @@ const Profile: FC<Props> = (props: Props) => {
   return (
     <MainLayout title="Thông tin chung">
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
+        behavior={Platform.OS === "ios" ? "position" : "padding"}
+        keyboardVerticalOffset={Dimensions.get("screen").height * 0.2}
       >
         <View
           style={{
             flexDirection: "row",
             justifyContent: "flex-end",
             marginRight: 20,
-            position: "relative",
           }}
         >
           <Modal
@@ -46,20 +47,18 @@ const Profile: FC<Props> = (props: Props) => {
             <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
               <View style={styles.settingContainer}>
                 <View style={styles.settingView}>
-                  <View style={styles.menuSettingView}>
-                    <TouchableOpacity
-                      style={{ alignItems: "center" }}
-                      onPress={() => setModalVisible(false)}
-                    >
-                      <Text>{t("label.changePass")}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{ alignItems: "center", marginTop: 8 }}
-                      onPress={() => setModalVisible(false)}
-                    >
-                      <Text>{t("label.logout")}</Text>
-                    </TouchableOpacity>
-                  </View>
+                  <TouchableOpacity
+                    style={{ alignItems: "center" }}
+                    onPress={() => setModalVisible(false)}
+                  >
+                    <Text>{t("label.changePass")}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ alignItems: "center", marginTop: 8 }}
+                    onPress={() => setModalVisible(false)}
+                  >
+                    <Text>{t("label.logout")}</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </TouchableWithoutFeedback>
