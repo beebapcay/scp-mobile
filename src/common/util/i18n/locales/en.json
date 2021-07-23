@@ -30,6 +30,7 @@
     "title.loginError":"Username or password is incorrect",
     "title.ok":"OK",
     "title.oldPasswordError":"Old password is incorrect",
+    "title.profile": "Profile",
     "title.tenantError":"Please select tenant",
     "title.tenantPlaceholder":"Select tenant",
     "field.firstName": "First name",
