@@ -31,9 +31,9 @@ const Login: FC<Props> = (props: Props) => {
 
   const handleLoginPress = (loginInfo: LoginInfoObject): void => {
     if (
-      loginInfo.username !== 'test'
-      || loginInfo.password !== '12345678'
-      || loginInfo.tenant === ''
+      loginInfo.username !== 'test' ||
+      loginInfo.password !== '12345678' ||
+      loginInfo.tenant === ''
     ) {
       Alert.alert(`${t('title.error')}`, `${t('title.loginError')}`, [
         {
@@ -74,6 +74,10 @@ const Login: FC<Props> = (props: Props) => {
             <RNPickerSelect
               style={styles}
               onValueChange={onChange}
+              placeholder={{
+                label: t('title.tenantPlaceholder'),
+                value: '',
+              }}
               items={tempTenant.tenants}
             />
           </TouchableHighlight>
