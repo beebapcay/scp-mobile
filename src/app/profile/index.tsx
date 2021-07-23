@@ -9,13 +9,14 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
   Platform,
-} from "react-native";
-import MainLayout from "../../common/ui/layout/main-layout";
-import styles from "./style";
-import FormContainer from "./containers/FormContainer";
-import { CButtonCircle } from "../../common/ui/base";
-import { Feather } from "@expo/vector-icons";
-import { useTranslation } from "react-i18next";
+} from 'react-native';
+import MainLayout from '../../common/ui/layout/main-layout';
+import styles from './style';
+import FormContainer from './containers/FormContainer';
+import { CButtonCircle } from '../../common/ui/base';
+import { Feather } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
+import { ScreenURL } from '../../models/enum';
 
 interface Props extends RouteComponentProps {}
 
@@ -26,8 +27,8 @@ const Profile: FC<Props> = (props: Props) => {
     <MainLayout title="Thông tin chung">
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={Platform.OS === "ios" ? "position" : "padding"}
-        keyboardVerticalOffset={Dimensions.get("screen").height * 0.2}
+        behavior={Platform.OS === 'ios' ? 'position' : 'padding'}
+        keyboardVerticalOffset={Dimensions.get('screen').height * 0.2}
       >
         <View
           style={{
@@ -49,16 +50,18 @@ const Profile: FC<Props> = (props: Props) => {
               <View style={styles.settingContainer}>
                 <View style={styles.settingView}>
                   <TouchableOpacity
-                    style={{ alignItems: "center" }}
-                    onPress={() => setModalVisible(false)}
+                    style={{ alignItems: 'center' }}
+                    onPress={() =>
+                      props.history.push(ScreenURL.CHANGE_PASSWORD)
+                    }
                   >
-                    <Text>{t("label.changePass")}</Text>
+                    <Text>{t('label.changePass')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={{ alignItems: "center", marginTop: 8 }}
-                    onPress={() => setModalVisible(false)}
+                    style={{ alignItems: 'center', marginTop: 8 }}
+                    onPress={() => props.history.push(ScreenURL.HOME)}
                   >
-                    <Text>{t("label.logout")}</Text>
+                    <Text>{t('label.logout')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>

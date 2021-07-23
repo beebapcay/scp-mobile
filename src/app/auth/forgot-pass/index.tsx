@@ -10,7 +10,6 @@ import { email_reg } from '../../../common/util/constants';
 import ButtonContainer from './btnContainer';
 import CompleteComponent from '../../../common/ui/layout/auth-layout/completeComponent';
 import ResetLayout from '../../../common/ui/layout/auth-layout/resetLayout';
-import { ScreenURL } from '../../../models/enum';
 
 interface Props extends RouteComponentProps<any> {}
 interface SubmitObject {
@@ -69,7 +68,6 @@ const ForgotPassword: FC<Props> = (props: Props) => {
           {errors.email && (
             <Text style={styles.errorText}>{t('title.emailError')}</Text>
           )}
-
           <ButtonContainer
             onSendPress={handleSubmit(handleSendPress)}
             onBackPress={handleBackPress}
