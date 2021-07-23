@@ -48,7 +48,6 @@ const ChangePassword: FC<Props> = (props: Props) => {
         newPassword: '',
         confirmPassword: '',
       });
-      props.history.goBack();
     }
   };
 

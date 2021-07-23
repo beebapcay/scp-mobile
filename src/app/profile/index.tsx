@@ -1,5 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import React, { FC, useState } from "react";
+import { StatusBar } from 'expo-status-bar';
+import React, { FC, useState } from 'react';
 import {
   KeyboardAvoidingView,
   View,
@@ -17,7 +17,7 @@ import { CButtonCircle } from "../../common/ui/base";
 import { Feather } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
 const Profile: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
@@ -31,14 +31,15 @@ const Profile: FC<Props> = (props: Props) => {
       >
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
             marginRight: 20,
+            position: 'relative',
           }}
         >
           <Modal
             animationType="fade"
-            transparent={true}
+            transparent
             visible={modalVisible}
             onRequestClose={() => {
               setModalVisible(!modalVisible);
