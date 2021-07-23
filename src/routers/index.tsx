@@ -22,7 +22,11 @@ const Routers: FC<Props> = (props: Props) => (
         component={ForgotPassword}
       />
       <PublicRoute exact path={ScreenURL.PROFILE} component={Profile} />
-      <PublicRoute exact path={ScreenURL.HOME} component={ResetPassword} />
+      <PublicRoute
+        exact
+        path={ScreenURL.RESET_PASSWORD}
+        component={ResetPassword}
+      />
       <PublicRoute
         exact
         path={ScreenURL.CHANGE_PASSWORD}
