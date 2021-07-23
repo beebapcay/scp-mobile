@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { TouchableHighlight, Text, Alert } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import RNPickerSelect from 'react-native-picker-select';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { RouteComponentProps } from 'react-router-native';
@@ -16,11 +16,11 @@ interface Props extends RouteComponentProps<any> {}
 interface LoginInfoObject {
   username: string;
   password: string;
+  tenant: string;
 }
 
 const Login: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
-  const [tenant, setTenant] = useState<string>(tempTenant.tenants[0].value);
   const [secure, setSecure] = useState<boolean>(true);
   const {
     control,
@@ -30,7 +30,11 @@ const Login: FC<Props> = (props: Props) => {
   } = useForm({ reValidateMode: 'onSubmit' });
 
   const handleLoginPress = (loginInfo: LoginInfoObject): void => {
-    if (loginInfo.username !== 'test' || loginInfo.password !== '12345678') {
+    if (
+      loginInfo.username !== 'test'
+      || loginInfo.password !== '12345678'
+      || loginInfo.tenant === ''
+    ) {
       Alert.alert(`${t('title.error')}`, `${t('title.loginError')}`, [
         {
           text: `${t('title.ok')}`,
@@ -42,6 +46,7 @@ const Login: FC<Props> = (props: Props) => {
       reset({
         username: '',
         password: '',
+        tenant: '',
       });
       props.history.push(ScreenURL.DASHBOARD);
     }
@@ -61,24 +66,31 @@ const Login: FC<Props> = (props: Props) => {
 
   return (
     <AuthLayout>
-      <TouchableHighlight style={styles.pickerContainer}>
-        <Picker
-          style={styles.picker}
-          selectedValue={tenant}
-          mode="dropdown"
-          onValueChange={(itemValue) => {
-            setTenant(itemValue);
-          }}
-        >
-          {tempTenant.tenants.map((item) => (
-            <Picker.Item
-              label={item.label}
-              value={item.value}
-              key={item.value}
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange } }) => (
+          <TouchableHighlight style={styles.pickerContainer}>
+            <RNPickerSelect
+              style={styles}
+              onValueChange={onChange}
+              items={tempTenant.tenants}
             />
-          ))}
-        </Picker>
-      </TouchableHighlight>
+          </TouchableHighlight>
+        )}
+        name="tenant"
+        defaultValue=""
+      />
+      {errors.tenant && (
+        <Text style={styles.errorText}>{t('title.tenantError')}</Text>
+      )}
+      {/* <TouchableHighlight style={styles.pickerContainer}>
+        <RNPickerSelect
+          style={styles}
+          onValueChange={(value) => setTenant(value)}
+          items={tempTenant.tenants}
+        />
+      </TouchableHighlight> */}
 
       <Controller
         control={control}

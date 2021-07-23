@@ -30,6 +30,7 @@
     "title.loginError":"Tài khoản hoặc mật khẩu không đúng",
     "title.ok":"Đồng ý",
     "title.oldPasswordError":"Mật khẩu cũ không đúng",
+    "title.tenantError":"Vui lòng chọn tenant",
     "field.firstName": "Tên",
     "field.lastName": "Họ",
     "field.email": "Địa chỉ Email",
