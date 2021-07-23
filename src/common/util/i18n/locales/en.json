@@ -30,6 +30,7 @@
     "title.loginError":"Username or password is incorrect",
     "title.ok":"OK",
     "title.oldPasswordError":"Old password is incorrect",
+    "title.profile": "Profile",
     "field.firstName": "First name",
     "field.lastName": "Last name",
     "field.email": "Email address",
