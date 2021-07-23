@@ -1,4 +1,4 @@
-import { Gender, Positions } from './enum';
+import { Gender, Positions } from "./enum";
 
 export interface UserProfile {
   readonly user_id: string;
@@ -18,6 +18,7 @@ export interface UserProfile {
 }
 
 export interface UserFormInput {
+  avatar: string | null;
   firstName: string;
   lastName: string;
   email: string;
