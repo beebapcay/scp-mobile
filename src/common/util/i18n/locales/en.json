@@ -31,6 +31,8 @@
     "title.ok":"OK",
     "title.oldPasswordError":"Old password is incorrect",
     "title.profile": "Profile",
+    "title.tenantError":"Please select tenant",
+    "title.tenantPlaceholder":"Select tenant",
     "field.firstName": "First name",
     "field.lastName": "Last name",
     "field.email": "Email address",

@@ -1,7 +1,12 @@
 import React, { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Keyboard, TouchableWithoutFeedback, View, Text,
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import styles from './resetLayoutStyle';
 
@@ -14,12 +19,15 @@ const ResetLayout: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
         <View style={styles.cardView}>
           <Text style={styles.title}>{t(props.titleKey)}</Text>
           {props.children}
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };

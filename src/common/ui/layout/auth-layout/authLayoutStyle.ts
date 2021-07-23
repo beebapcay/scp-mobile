@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 20,
+    marginTop: 20,
+    marginBottom: 10,
   },
   picker: {
     width: '100%',
@@ -65,6 +66,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FF0000',
+  },
+  inputAndroid: {
+    width: '100%',
+    height: '100%',
+    color: '#000000',
+  },
+  inputIOS: {
+    width: '100%',
+    height: '100%',
+    color: '#000000',
+    paddingHorizontal: 10,
   },
 });
 

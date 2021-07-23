@@ -60,13 +60,13 @@ const Profile: FC<Props> = (props: Props) => {
                       props.history.push(ScreenURL.CHANGE_PASSWORD)
                     }
                   >
-                    <Text>{t("label.changePass")}</Text>
+                    <Text>{t('label.changePass')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ alignItems: "center", marginTop: 8 }}
                     onPress={() => props.history.push(ScreenURL.HOME)}
                   >
-                    <Text>{t("label.logout")}</Text>
+                    <Text>{t('label.logout')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
