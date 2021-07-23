@@ -1,27 +1,18 @@
-import React, { FC, useState } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import * as ImagePicker from 'expo-image-picker';
-import { Feather } from '@expo/vector-icons';
-import styles from '../style';
-import { UserProfile } from '../../../models';
-
-import { RootState } from '../../../models/rootReducer';
-import { default_avatar } from '../../../common/util/constants';
-import { updateAvatar } from '../slice';
-import { CButtonCircle } from '../../../common/ui/base';
+import React, { FC } from "react";
+import { View, Image } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { Feather } from "@expo/vector-icons";
+import styles from "../style";
+import { default_avatar } from "../../../common/util/constants";
+import { CButtonCircle } from "../../../common/ui/base";
 
 interface Props {
+  value: string | null;
   isEdit: boolean;
+  onChangeAvatar: (avatar: string) => void;
 }
 
 const AvatarContainer: FC<Props> = (props: Props) => {
-  const userInfo: UserProfile = useSelector(
-    (state: RootState) => state.profile.userInfo,
-  );
-  const dispatch = useDispatch();
-  const [image, setImage] = useState<string | null>(userInfo.avatar);
-
   const pickImage = async (): Promise<void> => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -31,15 +22,14 @@ const AvatarContainer: FC<Props> = (props: Props) => {
     });
 
     if (!result.cancelled) {
-      setImage(result.uri);
-      dispatch(updateAvatar(result.uri));
+      props.onChangeAvatar(result.uri);
     }
   };
 
   return (
     <View style={styles.avatarContainer}>
       <View>
-        {image === null ? (
+        {props.value === null ? (
           <Image
             source={{ uri: default_avatar }}
             resizeMode="cover"
@@ -47,7 +37,7 @@ const AvatarContainer: FC<Props> = (props: Props) => {
           />
         ) : (
           <Image
-            source={{ uri: image }}
+            source={{ uri: props.value }}
             resizeMode="cover"
             style={styles.avatar}
           />
