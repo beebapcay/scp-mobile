@@ -11,11 +11,11 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { RouteComponentProps } from 'react-router-native';
 import MainLayout from '../../common/ui/layout/main-layout';
 import styles from './style';
 import FormContainer from './containers/FormContainer';
 import { CButtonCircle } from '../../common/ui/base';
-import { RouteComponentProps } from 'react-router-native';
 import { ScreenURL } from '../../models/enum';
 
 interface Props extends RouteComponentProps {}
@@ -51,9 +51,7 @@ const Profile: FC<Props> = (props: Props) => {
                   <View style={styles.menuSettingView}>
                     <TouchableOpacity
                       style={{ alignItems: 'center' }}
-                      onPress={() =>
-                        props.history.push(ScreenURL.CHANGE_PASSWORD)
-                      }
+                      onPress={() => props.history.push(ScreenURL.CHANGE_PASSWORD)}
                     >
                       <Text>{t('label.changePass')}</Text>
                     </TouchableOpacity>

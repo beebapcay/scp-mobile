@@ -5,11 +5,11 @@ import { Controller, useForm } from 'react-hook-form';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { RouteComponentProps } from 'react-router-native';
 import styles from '../../../common/ui/layout/auth-layout/resetLayoutStyle';
-import { ScreenURL } from '../../../models/enum';
 import CompleteComponent from '../../../common/ui/layout/auth-layout/completeComponent';
 import ResetLayout from '../../../common/ui/layout/auth-layout/resetLayout';
 import PasswordTextInput from '../../../common/ui/base/textInput/passwordTextInput';
-import ButtonContainer from '../forgot-pass/btnContainer';
+import LargeBtn from '../../../common/ui/base/button/LargeBtn';
+import { SmallText } from '../../../common/ui/base/touchableText';
 
 interface Props extends RouteComponentProps<any> {}
 const ChangePassword: FC<Props> = (props: Props) => {
@@ -163,11 +163,13 @@ const ChangePassword: FC<Props> = (props: Props) => {
               </Text>
             )}
 
-            <ButtonContainer
-              onSendPress={handleSubmit(handleSendPress)}
-              onBackPress={handleBackPress}
+            <LargeBtn
+              onBtnPress={handleSubmit(handleSendPress)}
               title={t('title.confirmChangePassword')}
-              backTitle={t('title.backToProfile')}
+            />
+            <SmallText
+              onTextPress={handleBackPress}
+              title={t('title.backToProfile')}
             />
           </View>
         </>
