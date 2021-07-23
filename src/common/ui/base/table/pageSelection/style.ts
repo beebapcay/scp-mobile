@@ -10,12 +10,12 @@ const style = StyleSheet.create({
   },
   arrowNavigation: {
     margin: 4,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
+    padding: 4,
     borderRadius: 128,
     backgroundColor: Color.LIGHT_GRAY,
   },
   arrowText: {
+    aspectRatio: 1,
     textAlign: 'center',
     fontWeight: 'bold',
     color: 'black',

@@ -44,14 +44,14 @@ const PageSelection = (props: Props) => {
     const internalStyle = StyleSheet.create({
       page: {
         margin: 4,
-        paddingVertical: 4,
-        paddingHorizontal: 8,
-        borderRadius: 100,
+        padding: 4,
+        borderRadius: 128,
         borderColor: Color.BLUE,
         backgroundColor: index == pageIndex ? Color.BLUE : 'white',
         borderWidth: 2,
       },
       text: {
+        aspectRatio: 1,
         textAlign: 'center',
         fontWeight: 'bold',
         color: index == pageIndex ? 'white' : Color.BLUE,
