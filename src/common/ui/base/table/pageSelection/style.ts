@@ -20,6 +20,18 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  page: {
+    margin: 4,
+    padding: 4,
+    borderRadius: 128,
+    borderColor: Color.BLUE,
+    borderWidth: 2,
+  },
+  text: {
+    aspectRatio: 1,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  }
 });
 
 export default style;

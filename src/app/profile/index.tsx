@@ -27,7 +27,7 @@ const Profile: FC<Props> = (props: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <MainLayout title={t("title.profile")}>
-      <ScrollView bounces={false}>
+      <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <KeyboardAvoidingView
           style={styles.container}
           behavior={Platform.OS === "ios" ? "position" : undefined}

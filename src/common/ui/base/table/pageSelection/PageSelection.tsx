@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet, TouchableOpacity, View, Text,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { Color } from '../../../../enum/enum';
 import style from './style';
 
@@ -43,17 +41,9 @@ const PageSelection = (props: Props) => {
     // Style
     const internalStyle = StyleSheet.create({
       page: {
-        margin: 4,
-        padding: 4,
-        borderRadius: 128,
-        borderColor: Color.BLUE,
         backgroundColor: index == pageIndex ? Color.BLUE : 'white',
-        borderWidth: 2,
       },
       text: {
-        aspectRatio: 1,
-        textAlign: 'center',
-        fontWeight: 'bold',
         color: index == pageIndex ? 'white' : Color.BLUE,
       },
     });
@@ -62,11 +52,11 @@ const PageSelection = (props: Props) => {
     const pagePos = pageIndex + 1;
     pages.push(
       <TouchableOpacity
-        style={internalStyle.page}
+        style={[style.page, internalStyle.page]}
         onPress={() => onIndexChanged(pageIndex)}
         key={pageIndex}
       >
-        <Text style={internalStyle.text}>{pagePos}</Text>
+        <Text style={[style.text, internalStyle.text]}>{pagePos}</Text>
       </TouchableOpacity>,
     );
   }

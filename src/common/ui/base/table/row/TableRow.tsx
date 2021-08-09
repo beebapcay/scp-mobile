@@ -1,30 +1,30 @@
-import React, { FC, ReactChild, ReactNode } from 'react';
-
-import { View, StyleSheet, Text } from 'react-native';
+import React, { FC, ReactChild } from 'react';
+import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import style from './style';
 
 export interface TableRowProps {
   children: ReactChild[];
   columnRatio?: number[];
+  onPress?: () => void;
 }
 
 const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
   // Props
-  const { children, columnRatio } = props;
+  const { children, columnRatio, onPress } = props;
 
   // Cells
-  const cells: JSX.Element[] = children.map((item: ReactNode, index: number) => {
+  const cells: ReactChild[] = children.map((item: ReactChild, index: number) => {
     // Style
-    const headerStyle = StyleSheet.create({
+    const rowStyle = StyleSheet.create({
       cell: {
         flex: columnRatio?.[index] ?? 1,
-        padding: 8,
+        paddingVertical: 10,
       },
     });
 
     // Component
     return (
-      <View style={headerStyle.cell} key={index}>
+      <View style={rowStyle.cell} key={index}>
         {(typeof item === 'string' || typeof item === 'number')
           ? <Text style={style.text}>{item}</Text>
           : { item }}
@@ -34,9 +34,11 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
 
   // Component
   return (
-    <View style={style.container}>
-      {cells}
-    </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={style.container}>
+        {cells}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

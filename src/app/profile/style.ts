@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   avatar: {
-    width: 200,
-    height: 200,
-    borderRadius: 200,
+    width: 180,
+    height: 180,
+    borderRadius: 180,
     borderWidth: 2,
     borderColor: "#1eb2ff",
     overflow: "hidden",
