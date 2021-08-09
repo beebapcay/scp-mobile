@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    marginTop: 24,
+    flex: 1
   },
-  text: {
-    textAlign: 'center',
-  },
+  table: {
+    flex: 1
+  }
 });
 
 export default style;

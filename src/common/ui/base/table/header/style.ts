@@ -4,7 +4,7 @@ import { Color } from '../../../../enum/enum';
 const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: Color.BLUE,
+    backgroundColor: Color.DARK_BLUE,
   },
   text: {
     textAlign: 'center',

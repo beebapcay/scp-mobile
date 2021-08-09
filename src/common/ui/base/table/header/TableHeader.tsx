@@ -1,4 +1,4 @@
-import React, { FC, ReactChild, ReactNode } from 'react';
+import React, { FC, ReactChild } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import style from './style';
 
@@ -12,12 +12,12 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
   const { children, columnRatio } = props;
 
   // Header columns
-  const headers: JSX.Element[] = children.map((item: ReactNode, index: number) => {
+  const headers: ReactChild[] = children.map((item: ReactChild, index: number) => {
     // Style
     const headerStyle = StyleSheet.create({
       cell: {
         flex: columnRatio?.[index] ?? 1,
-        padding: 8,
+        paddingVertical: 10,
       },
     });
 
