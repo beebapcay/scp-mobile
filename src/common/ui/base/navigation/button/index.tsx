@@ -14,7 +14,7 @@ export interface NavButtonProps {
 const NavButton: FC<NavButtonProps> = (props: NavButtonProps) => {
   // Props
   const {
-    iconName: name,
+    iconName,
     size = 28,
     iconColor = 'white',
     to,
@@ -24,7 +24,7 @@ const NavButton: FC<NavButtonProps> = (props: NavButtonProps) => {
   // Component
   return (
     <Link style={style.container} to={to} onPress={onPressed} underlayColor="#00000055">
-      <Icon style={style.icon} name={name} size={size} color={iconColor} />
+      <Icon style={style.icon} name={iconName} size={size} color={iconColor} />
     </Link>
   );
 }

@@ -30,12 +30,9 @@ const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
     // Props
     const { item, index } = row;
 
-    // Style
-    const rowStyle: object = (index % 2 === 0 ? style.rowEven : style.rowOdd);
-
     // Element
     return (
-      <View style={rowStyle}>
+      <View style={index % 2 === 0 ? style.rowEven : style.rowOdd}>
         {item}
       </View>
     );
@@ -44,34 +41,34 @@ const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
   // Footer
   const ListFooter = (): JSX.Element | null => {
     return isLoadMore
-      ? null
-      : (<ActivityIndicator style={style.loading} size='large' color={Color.BLUE} />);
+      ? (<ActivityIndicator style={style.loading} size='large' color={Color.BLUE} />)
+      : null;
   }
 
-  // Component
-  return (
-    <View style={tableStyle}>
+// Component
+return (
+  <View style={tableStyle}>
 
-      {headers === undefined
-        ? undefined
-        : (
-          <TableHeader columnRatio={columnRatio}>
-            {headers}
-          </TableHeader>
-        )
-      }
+    {headers === undefined
+      ? undefined
+      : (
+        <TableHeader columnRatio={columnRatio}>
+          {headers}
+        </TableHeader>
+      )
+    }
 
-      <FlatList
-        style={style.flatlist}
-        data={children}
-        renderItem={renderRow}
-        ListFooterComponent={ListFooter}
-        showsVerticalScrollIndicator={false}
-        onEndReached={onNearEndReached}
-        onEndReachedThreshold={0.1} />
+    <FlatList
+      style={style.flatlist}
+      data={children}
+      renderItem={renderRow}
+      ListFooterComponent={ListFooter}
+      showsVerticalScrollIndicator={false}
+      onEndReached={onNearEndReached}
+      onEndReachedThreshold={0.1} />
 
-    </View>
-  );
+  </View>
+);
 };
 
 export default InfiniteTable;

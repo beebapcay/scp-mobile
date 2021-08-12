@@ -41,9 +41,9 @@ const Dashboard: FC<Props> = (props: Props) => {
 
   // Events
   async function onNearEndReached(): Promise<void> {
-    setIsLoadMore(false);
-    await fetchData();
     setIsLoadMore(true);
+    await fetchData();
+    setIsLoadMore(false);
   }
   function onDashboardRowPressed(index: number): void {
     history.push(ScreenURL.PERSON_DASHBOARD, { ...dataSection[index] });

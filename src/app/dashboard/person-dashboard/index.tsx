@@ -16,9 +16,7 @@ export type PersonDashboardType = {
   approver: string;
 }
 
-interface Props {
-
-}
+interface Props {}
 
 const PersonDashboard: FC<Props> = (props: Props) => {
   // Props
@@ -49,7 +47,7 @@ const PersonDashboard: FC<Props> = (props: Props) => {
 
       <AppBar canGoBack={true} title='Person dashboard' />
 
-      <InfiniteTable style={style.table} columnRatio={columnRatio}>
+      <InfiniteTable isLoadMore={false} style={style.table} columnRatio={columnRatio}>
         {content.titles.map((title: string, index: number) => (
           <TableRow columnRatio={columnRatio} key={index}>
             {title}
