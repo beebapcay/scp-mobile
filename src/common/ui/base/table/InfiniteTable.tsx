@@ -1,4 +1,4 @@
-import React, { FC, ReactChild, ReactText, useState } from 'react';
+import React, { FC, ReactChild, ReactText } from 'react';
 import { View, ViewStyle, FlatList, ActivityIndicator } from 'react-native';
 import { Color } from '../../../enum/enum';
 import { Row } from '../../../interface/interface';
@@ -11,12 +11,19 @@ interface InfiniteTableProps {
   headers?: ReactText[];
   children?: ReactChild[];
   onNearEndReached?: () => void;
+  isLoadMore?: boolean;
 }
 
 const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
   // Props
-  const { style: tableStyle, headers, columnRatio, children, onNearEndReached } = props;
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const {
+    style: tableStyle,
+    headers,
+    columnRatio,
+    children,
+    onNearEndReached,
+    isLoadMore = false
+  } = props;
 
   // Row
   function renderRow(row: Row<ReactChild>): JSX.Element {
@@ -36,7 +43,7 @@ const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
 
   // Footer
   const ListFooter = (): JSX.Element | null => {
-    return isLoading
+    return isLoadMore
       ? null
       : (<ActivityIndicator style={style.loading} size='large' color={Color.BLUE} />);
   }

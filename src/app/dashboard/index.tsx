@@ -24,23 +24,26 @@ const Dashboard: FC<Props> = (props: Props) => {
   const [dataSection, setDataSection] = useState<DashboardRowType[]>(data.slice(0, sectionCount * maxItemPerSection));
   const columnRatio: number[] = [2, 3, 2, 5];
   const headers: string[] = ['No.', 'From', 'Days', 'Approver'];
-  const history = useHistory();
+  const history = useHistory<{}>();
+  const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
 
   // Supporting function
-  function fetchData(): void {
+  async function fetchData(): Promise<void> {
     if (sectionCount >= Math.ceil(data.length / maxItemPerSection))
       return;
 
-    setTimeout(() => {
+    await new Promise<void>(() => setTimeout(() => {
       const newSectionCount = sectionCount + 1;
       setSectionCount(newSectionCount);
       setDataSection(data.slice(0, Math.min(data.length, newSectionCount * maxItemPerSection)));
-    }, 1000);
+    }));
   }
 
   // Events
-  function onNearEndReached(): void {
-    fetchData();
+  async function onNearEndReached(): Promise<void> {
+    setIsLoadMore(false);
+    await fetchData();
+    setIsLoadMore(true);
   }
   function onDashboardRowPressed(index: number): void {
     history.push(ScreenURL.PERSON_DASHBOARD, { ...dataSection[index] });
@@ -68,9 +71,14 @@ const Dashboard: FC<Props> = (props: Props) => {
         headers={headers}
         columnRatio={columnRatio}
         onNearEndReached={onNearEndReached}
+        isLoadMore={isLoadMore}
       >
         {dataSection.map((item: DashboardRowType, index: number) => (
-          <TableRow key={index} columnRatio={columnRatio} onPress={() => onDashboardRowPressed(index)}>
+          <TableRow
+            key={index}
+            columnRatio={columnRatio}
+            onPress={() => onDashboardRowPressed(index)}
+          >
             {item.no}
             {item.from.toLocaleDateString()}
             {item.days}
