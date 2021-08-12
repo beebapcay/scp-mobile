@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { RouteComponentProps, useHistory } from 'react-router-native';
 import { maxItemPerPage as maxItemPerSection } from '../../common/const/constant';
 import AppBar from '../../common/ui/base/app-bar';
+import NavigationTab, { NavButton } from '../../common/ui/base/navigation-tab';
 import { InfiniteTable } from '../../common/ui/base/table';
 import TableRow from '../../common/ui/base/table/row/TableRow';
+import BottomNavigation from '../../common/ui/layout/bottom-navigation';
 import { ScreenURL } from '../../models/enum';
 import { dataTemp as data } from './dataTemp';
 import style from './style';
@@ -76,6 +78,8 @@ const Dashboard: FC<Props> = (props: Props) => {
           </TableRow>
         ))}
       </InfiniteTable>
+
+      <BottomNavigation />
 
     </View>
   );

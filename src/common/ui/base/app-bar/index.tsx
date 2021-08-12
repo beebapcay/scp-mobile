@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from "react";
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { useHistory } from "react-router-native";
 import style from './style';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 interface Props {
   title: string;
@@ -11,11 +12,11 @@ interface Props {
 
 const AppBar: FC<Props> = (props: Props) => {
   // Props
-  const { title, canGoBack, children } = props
+  const { title, canGoBack = false, children } = props
   const history = useHistory();
 
   // Events
-  function goBack() {
+  function goBack(): void {
     history.goBack();
   }
 
@@ -23,9 +24,9 @@ const AppBar: FC<Props> = (props: Props) => {
   return (
     <View style={style.container}>
 
-      {(canGoBack ?? false) &&
+      {canGoBack &&
         <TouchableOpacity style={style.backButton} onPress={goBack}>
-          <Image style={style.backImage} source={require('../../../../../assets/icons/back.png')} />
+          <Icon name='arrow-left' size={24} color='white'/>
         </TouchableOpacity>
       }
 

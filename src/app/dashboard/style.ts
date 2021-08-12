@@ -3,7 +3,6 @@ import { Color } from '../../common/enum/enum';
 
 const style = StyleSheet.create({
   container: {
-    marginTop: 24,
     flex: 1
   },
   rowContainer: {

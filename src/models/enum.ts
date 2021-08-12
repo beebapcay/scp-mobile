@@ -1,7 +1,10 @@
 export enum ScreenURL {
   HOME = '/',
-  DASHBOARD='/dashboard',
-  PERSON_DASHBOARD='/dashboard/person',
+  LOGIN = '/login',
+  MAIN = '/main',
+  DASHBOARD='/main/dashboard',
+  NOTIFICATION = '/main/notification',
+  PERSON_DASHBOARD='/dashboard/person',     /////////////////////
   FORGOT_PASSWORD = '/forgotPassword',
   RESET_PASSWORD = '/resetPassword',
   REGISTER = '/register',

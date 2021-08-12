@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { RouteProps, Route } from 'react-router-native';
 import { ScreenURL } from '../models/enum';
+import MainRoute from './main';
 
 interface Props extends RouteProps {
   path: ScreenURL;
@@ -12,3 +13,4 @@ const PublicRoute: FC<Props> = (props: Props) => {
 };
 
 export default PublicRoute;
+export { MainRoute }
