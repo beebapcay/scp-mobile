@@ -10,6 +10,9 @@ const style = StyleSheet.create({
   },
   rowEven: {
     backgroundColor: Color.LIGHT_GRAY
+  },
+  loading: {
+    margin: 8
   }
 });
 

@@ -9,6 +9,8 @@ import Dashboard from '../app/dashboard';
 import ChangePassword from '../app/auth/change-pass';
 import Profile from '../app/profile';
 import PersonDashboard from '../app/dashboard/person-dashboard';
+import Main from '../app/main';
+import Notification from '../app/notification';
 
 interface Props { }
 
@@ -18,15 +20,25 @@ const Routers: FC<Props> = (props: Props) => (
       <PublicRoute
         exact
         path={ScreenURL.HOME}
-        component={Login} />
+        component={Login}
+      />
       <PublicRoute
-        exact
+        path={ScreenURL.MAIN}
+        component={Main}
+      />
+      <PublicRoute
         path={ScreenURL.DASHBOARD}
-        component={Dashboard} />
+        component={Dashboard}
+      />
+      <PublicRoute
+        path={ScreenURL.NOTIFICATION}
+        component={Notification}
+      />
       <PublicRoute
         exact
         path={ScreenURL.PERSON_DASHBOARD}
-        component={PersonDashboard} />
+        component={PersonDashboard}
+      />
       <PublicRoute
         exact
         path={ScreenURL.FORGOT_PASSWORD}

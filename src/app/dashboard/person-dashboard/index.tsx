@@ -1,24 +1,22 @@
 import React, { FC } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View } from 'react-native';
 import { useHistory } from 'react-router-native';
+import AppBar from '../../../common/ui/base/app-bar';
 import { InfiniteTable } from '../../../common/ui/base/table';
 import TableRow from '../../../common/ui/base/table/row/TableRow';
-import AppBar from '../../../common/ui/layout/app-bar';
-import style from './style'
+import style from './style';
 
 export type PersonDashboardType = {
   no: number;
   from: Date;
   to: Date;
-  days: number;
+  // days: number;
   reason: string;
   status: string;
   approver: string;
 }
 
-interface Props {
-
-}
+interface Props {}
 
 const PersonDashboard: FC<Props> = (props: Props) => {
   // Props
@@ -30,7 +28,6 @@ const PersonDashboard: FC<Props> = (props: Props) => {
       'No.',
       'From',
       'To',
-      'Days',
       'Reason',
       'Status',
       'Approver'
@@ -39,7 +36,6 @@ const PersonDashboard: FC<Props> = (props: Props) => {
       state.no,
       state.from.toLocaleDateString(),
       state.to.toLocaleDateString(),
-      state.days.toString(),
       state.reason,
       state.status,
       state.approver],
@@ -51,7 +47,7 @@ const PersonDashboard: FC<Props> = (props: Props) => {
 
       <AppBar canGoBack={true} title='Person dashboard' />
 
-      <InfiniteTable style={style.table} columnRatio={columnRatio}>
+      <InfiniteTable isLoadMore={false} style={style.table} columnRatio={columnRatio}>
         {content.titles.map((title: string, index: number) => (
           <TableRow columnRatio={columnRatio} key={index}>
             {title}

@@ -1,10 +1,10 @@
-import React, { FC, ReactChild } from 'react';
+import React, { FC, ReactChild, ReactText } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import style from './style';
 
 export interface TableHeaderProps {
-  children: ReactChild[];
-  columnRatio?: number[];
+  children: ReactText[];
+  columnRatio: number[];
 }
 
 const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
@@ -16,7 +16,7 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
     // Style
     const headerStyle = StyleSheet.create({
       cell: {
-        flex: columnRatio?.[index] ?? 1,
+        flex: columnRatio[index],
         paddingVertical: 10,
       },
     });
@@ -24,9 +24,7 @@ const TableHeader: FC<TableHeaderProps> = (props: TableHeaderProps) => {
     // Component
     return (
       <View style={headerStyle.cell} key={index}>
-        {(typeof item === 'string' || typeof item === 'number')
-          ? <Text style={style.text}>{item}</Text>
-          : { item }}
+        <Text style={style.text}>{item}</Text>
       </View>
     );
   });

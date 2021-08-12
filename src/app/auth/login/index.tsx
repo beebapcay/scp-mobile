@@ -48,7 +48,7 @@ const Login: FC<Props> = (props: Props) => {
         password: '',
         tenant: '',
       });
-      props.history.push(ScreenURL.DASHBOARD);
+      props.history.push(ScreenURL.MAIN);
     }
   };
 
