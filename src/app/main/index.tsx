@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import { Link, NativeRouter, Redirect, Route, Switch, useHistory } from 'react-router-native';
 import NavigationTab, { NavButton } from '../../common/ui/base/navigation';
 import { ScreenURL } from '../../models/enum';
-import PublicRoute, { MainRoute } from '../../routers/PublicRoute';
+import PublicRoute from '../../routers';
+import MainRoute from '../../routers/main';
 import Dashboard from '../dashboard';
 import Notification from '../notification';
 import Profile from '../profile';
@@ -12,9 +13,8 @@ import style from './style';
 interface Props { }
 
 const Main: FC<Props> = (props: Props) => {
+  // Props
   const history = useHistory();
-  console.log(history);
-  console.log('------------------------------------------------');
 
   // Component
   return history.location.pathname === ScreenURL.MAIN

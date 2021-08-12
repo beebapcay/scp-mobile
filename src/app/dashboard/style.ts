@@ -24,7 +24,7 @@ const style = StyleSheet.create({
   },
   table: {
     flex: 1,
-    margin: 10,
+    // margin: 10,
   },
   button: {
     alignSelf: 'center',
@@ -38,13 +38,6 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     color: Color.WHITE,
-  },
-  avatarButton: {
-    marginHorizontal: 8
-  },
-  avatarImage: {
-    width: 24,
-    height: 24
   },
 });
 

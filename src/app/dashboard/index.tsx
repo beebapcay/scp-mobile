@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import { RouteComponentProps, useHistory } from 'react-router-native';
 import { maxItemPerPage as maxItemPerSection } from '../../common/const/constant';
 import AppBar from '../../common/ui/base/app-bar';
@@ -31,9 +31,11 @@ const Dashboard: FC<Props> = (props: Props) => {
     if (sectionCount >= Math.ceil(data.length / maxItemPerSection))
       return;
 
-    const newSectionCount = sectionCount + 1;
-    setSectionCount(newSectionCount);
-    setDataSection(data.slice(0, Math.min(data.length, newSectionCount * maxItemPerSection)));
+    setTimeout(() => {
+      const newSectionCount = sectionCount + 1;
+      setSectionCount(newSectionCount);
+      setDataSection(data.slice(0, Math.min(data.length, newSectionCount * maxItemPerSection)));
+    }, 1000);
   }
 
   // Events

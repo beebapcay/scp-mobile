@@ -1,21 +1,22 @@
-import React, { FC, ReactChild } from 'react';
-import { View, StyleSheet, ViewStyle, FlatList, TouchableWithoutFeedback } from 'react-native';
+import React, { FC, ReactChild, ReactText, useState } from 'react';
+import { View, ViewStyle, FlatList, ActivityIndicator } from 'react-native';
+import { Color } from '../../../enum/enum';
 import { Row } from '../../../interface/interface';
 import TableHeader from './header/TableHeader';
 import style from './style'
 
 interface InfiniteTableProps {
   style?: ViewStyle;
-  columnRatio?: number[];
-  headers?: ReactChild[];
+  columnRatio: number[];
+  headers?: ReactText[];
   children?: ReactChild[];
   onNearEndReached?: () => void;
-  onRowClick?: (index: number) => void;
 }
 
 const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
   // Props
-  const { style: tableStyle, headers, columnRatio, children, onNearEndReached, onRowClick } = props;
+  const { style: tableStyle, headers, columnRatio, children, onNearEndReached } = props;
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Row
   function renderRow(row: Row<ReactChild>): JSX.Element {
@@ -25,20 +26,19 @@ const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
     // Style
     const rowStyle: object = (index % 2 === 0 ? style.rowEven : style.rowOdd);
 
-    // Event
-    function onPress() {
-      if (onRowClick !== undefined)
-        onRowClick(index);
-    }
-
     // Element
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
-        <View style={rowStyle}>
-          {item}
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={rowStyle}>
+        {item}
+      </View>
     );
+  }
+
+  // Footer
+  const ListFooter = (): JSX.Element | null => {
+    return isLoading
+      ? null
+      : (<ActivityIndicator style={style.loading} size='large' color={Color.BLUE} />);
   }
 
   // Component
@@ -58,6 +58,7 @@ const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
         style={style.flatlist}
         data={children}
         renderItem={renderRow}
+        ListFooterComponent={ListFooter}
         showsVerticalScrollIndicator={false}
         onEndReached={onNearEndReached}
         onEndReachedThreshold={0.1} />
