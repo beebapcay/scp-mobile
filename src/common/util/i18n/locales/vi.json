@@ -44,6 +44,15 @@
     "alert.save.title": "Lưu thông tin",
     "alert.save.description": "Bạn có chắc chắn lưu lại thông tin này?",
     "label.changePass": "Đổi mật khẩu",
-    "label.logout": "Đăng xuất"
-
+    "label.logout": "Đăng xuất",
+    "title.notification": "Thông báo",
+    "title.dashboard": "Dashboard",
+    "text.dayUsed": "Ngày đã sửa dụng:",
+    "text.dayAvailable": "Ngày còn lại:",
+    "text.dayUnit": "ngày",
+    "text.no": "Stt",
+    "text.from": "Từ",
+    "text.to": "Đến",
+    "text.days": "Ngày",
+    "text.approver": "Người duyệt"
 }

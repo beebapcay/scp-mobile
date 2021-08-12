@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import { RouteComponentProps, useHistory } from 'react-router-native';
 import { maxItemPerPage as maxItemPerSection } from '../../common/const/constant';
@@ -20,10 +21,16 @@ interface Props extends RouteComponentProps { }
 
 const Dashboard: FC<Props> = (props: Props) => {
   // Props
+  const { t } = useTranslation();
   const [sectionCount, setSectionCount] = useState<number>(1);
   const [dataSection, setDataSection] = useState<DashboardRowType[]>(data.slice(0, sectionCount * maxItemPerSection));
   const columnRatio: number[] = [2, 3, 2, 5];
-  const headers: string[] = ['No.', 'From', 'Days', 'Approver'];
+  const headers: string[] = [
+    t('text.no.'),
+    t('text.from'),
+    t('text.days'),
+    t('text.approver')
+  ];
   const history = useHistory<{}>();
   const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
 
@@ -53,16 +60,16 @@ const Dashboard: FC<Props> = (props: Props) => {
   return (
     <View style={style.container}>
 
-      <AppBar title='Leave statistic' />
+      <AppBar title={t('title.dashboard')} />
 
       <View>
         <View style={style.rowContainer}>
-          <Text style={style.columnInfo}>Day used:</Text>
-          <Text style={style.columnValue}>5.5 day(s)</Text>
+          <Text style={style.columnInfo}>{t('text.dayUsed')}</Text>
+          <Text style={style.columnValue}>{`4.5 ${t('text.dayUnit')}`}</Text>
         </View>
         <View style={style.rowContainer}>
-          <Text style={style.columnInfo}>Day available:</Text>
-          <Text style={style.columnValue}>10.5 day(s)</Text>
+          <Text style={style.columnInfo}>{t('text.dayAvailable')}</Text>
+          <Text style={style.columnValue}>{`10.5 ${t('text.dayUnit')}`}</Text>
         </View>
       </View>
 

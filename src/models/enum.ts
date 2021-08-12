@@ -4,12 +4,12 @@ export enum ScreenURL {
   MAIN = '/main',
   DASHBOARD='/main/dashboard',
   NOTIFICATION = '/main/notification',
+  PROFILE = '/main/profile',
   PERSON_DASHBOARD='/dashboard/person',     /////////////////////
   FORGOT_PASSWORD = '/forgotPassword',
   RESET_PASSWORD = '/resetPassword',
   REGISTER = '/register',
   CHANGE_PASSWORD = '/changePassword',
-  PROFILE = '/profile',
 }
 
 export enum ScopeKey {
