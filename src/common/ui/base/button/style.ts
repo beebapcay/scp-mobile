@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { Color } from '../../../enum/enum';
 
 const styles = StyleSheet.create({
   largeBtn: {
@@ -69,6 +70,33 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  normalBtn: {
+    flexDirection: 'row',
+    backgroundColor: Color.BLUE,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+    paddingVertical: 5,
+    paddingHorizontal: 12.5,
+    borderRadius: 5,
+  },
+  disableBtn: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+    paddingVertical: 5,
+    paddingHorizontal: 12.5,
+    borderRadius: 5,
+    opacity: 0.65,
+  },
+  iconBtn: {
+    fontSize: 26,
+  },
+  titleBtn: {
+    fontSize: 16,
+    marginLeft: 10,
   },
 });
 

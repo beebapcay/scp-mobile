@@ -9,33 +9,26 @@ import Dashboard from '../app/dashboard';
 import ChangePassword from '../app/auth/change-pass';
 import Profile from '../app/profile';
 import PersonDashboard from '../app/dashboard/person-dashboard';
+import SubmitLeave from '../app/dashboard/submit-leave';
 
-interface Props { }
+interface Props {}
 
 const Routers: FC<Props> = (props: Props) => (
   <NativeRouter>
     <Switch>
-      <PublicRoute
-        exact
-        path={ScreenURL.HOME}
-        component={Login} />
-      <PublicRoute
-        exact
-        path={ScreenURL.DASHBOARD}
-        component={Dashboard} />
+      <PublicRoute exact path={ScreenURL.HOME} component={Login} />
+      <PublicRoute exact path={ScreenURL.DASHBOARD} component={Dashboard} />
       <PublicRoute
         exact
         path={ScreenURL.PERSON_DASHBOARD}
-        component={PersonDashboard} />
+        component={PersonDashboard}
+      />
       <PublicRoute
         exact
         path={ScreenURL.FORGOT_PASSWORD}
         component={ForgotPassword}
       />
-      <PublicRoute
-        exact
-        path={ScreenURL.PROFILE}
-        component={Profile} />
+      <PublicRoute exact path={ScreenURL.PROFILE} component={Profile} />
       <PublicRoute
         exact
         path={ScreenURL.RESET_PASSWORD}
@@ -45,6 +38,11 @@ const Routers: FC<Props> = (props: Props) => (
         exact
         path={ScreenURL.CHANGE_PASSWORD}
         component={ChangePassword}
+      />
+      <PublicRoute
+        exact
+        path={ScreenURL.SUBMIT_LEAVE}
+        component={SubmitLeave}
       />
     </Switch>
   </NativeRouter>
