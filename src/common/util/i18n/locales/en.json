@@ -68,5 +68,11 @@
   "label.emailCc": "Email CC",
   "field.emailCcPlaceholder": "Multiple email address can be separated by using semicolon (;)",
   "action.submit": "Submit",
-  "action.cancel": "Cancel"
+  "action.cancel": "Cancel",
+  "err.inputErr": "This input is incorrected",
+  "title.leaveControl": "Leave Control",
+  "label.employee": "Employee",
+  "label.approver": "Approver",
+  "field.employeePlaceholder": "Choose Employee",
+  "field.approverPlaceholder": "Choose Approver"
 }

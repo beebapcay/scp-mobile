@@ -13,7 +13,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
-const FormSelectInput: React.FC<Props> = (props) => {
+const FormDialogSelectInput: React.FC<Props> = (props) => {
   const { label, labelHint, items, placeholder, errText, onChange, style } =
     props;
 
@@ -105,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormSelectInput;
+export default FormDialogSelectInput;

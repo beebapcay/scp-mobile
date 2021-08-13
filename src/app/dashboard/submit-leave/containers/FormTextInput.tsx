@@ -15,11 +15,22 @@ interface Props {
   multiline?: boolean;
   numOfLine?: number;
   placeholder?: string;
+  errText?: string;
+  onChange: (...event: any[]) => void;
   style?: StyleProp<ViewStyle>;
 }
 
 const FormTextInput: React.FC<Props> = (props) => {
-  const { label, labelHint, multiline, numOfLine, placeholder, style } = props;
+  const {
+    label,
+    labelHint,
+    multiline,
+    numOfLine,
+    errText,
+    onChange,
+    placeholder,
+    style,
+  } = props;
 
   return (
     <View style={[styles.inputContainer, style]}>
@@ -31,9 +42,11 @@ const FormTextInput: React.FC<Props> = (props) => {
         <TextInput
           placeholder={placeholder}
           multiline={multiline}
+          onChangeText={(text) => onChange(text)}
           numberOfLines={numOfLine}
           style={multiline ? styles.textInputMultiline : styles.textInput}
         />
+        {errText && <Text style={styles.err}>{errText}</Text>}
       </View>
     </View>
   );
@@ -92,6 +105,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderWidth: 1.5,
     borderColor: Color.GRAY,
+  },
+  err: {
+    marginBottom: 7.5,
+    marginLeft: 10,
+    fontSize: 12.5,
+    color: Color.RED900,
   },
 });
 

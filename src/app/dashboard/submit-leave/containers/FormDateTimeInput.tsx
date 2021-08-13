@@ -12,30 +12,44 @@ import {
 import { Color } from '../../../../common/enum/enum';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { format } from 'date-fns';
 
 interface Props {
   label: string;
   labelHint?: string;
   timeHint?: string;
   dateHint?: string;
+  errText?: string;
+  defaultValue?: { time: string; date: string };
+  onChange: (...event: any[]) => void;
   style?: StyleProp<ViewStyle>;
 }
 
 const FormDateTimeInput: React.FC<Props> = (props) => {
+  const {
+    label,
+    labelHint,
+    timeHint,
+    dateHint,
+    errText,
+    defaultValue,
+    onChange,
+    style,
+  } = props;
+
+  const [time, setTime] = useState(defaultValue?.time);
+  const [date, setDate] = useState(defaultValue?.date);
+
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState<'date' | 'time'>('date');
 
-  const { label, labelHint, timeHint, dateHint, style } = props;
-
   const showTimePicker = () => {
     setShow(true);
-
     setMode('time');
   };
 
   const showDatePicker = () => {
     setShow(true);
-
     setMode('date');
   };
 
@@ -53,8 +67,24 @@ const FormDateTimeInput: React.FC<Props> = (props) => {
           mode={mode}
           is24Hour={true}
           display="default"
-          onChange={() => {
+          onChange={(e: any, selectedDate: any) => {
+            const currentDate = selectedDate || new Date();
             setShow(Platform.OS === 'ios');
+            if (mode === 'date') {
+              const formatCurrentDate = format(currentDate, 'MMM dd, yyyy');
+              onChange({
+                time: defaultValue?.time,
+                date: formatCurrentDate,
+              });
+              setDate(formatCurrentDate);
+            } else {
+              const formatCurrentTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+              onChange({
+                time: formatCurrentTime,
+                date: format(currentDate, 'MMM dd, yyyy'),
+              });
+              setTime(formatCurrentTime);
+            }
           }}
         />
       )}
@@ -68,7 +98,7 @@ const FormDateTimeInput: React.FC<Props> = (props) => {
               <TextInput
                 editable={false}
                 style={styles.pickerValue}
-                value={'8:30'}
+                value={time}
               />
               <MaterialCommunityIcons
                 name="clock-outline"
@@ -86,7 +116,7 @@ const FormDateTimeInput: React.FC<Props> = (props) => {
               <TextInput
                 editable={false}
                 style={styles.pickerValue}
-                value={'13/12/2021'}
+                value={date}
               />
               <MaterialCommunityIcons
                 name="calendar-today"
@@ -95,6 +125,7 @@ const FormDateTimeInput: React.FC<Props> = (props) => {
             </View>
           </TouchableWithoutFeedback>
         </View>
+        {errText && <Text style={styles.err}>{errText}</Text>}
       </View>
     </View>
   );
@@ -157,6 +188,7 @@ const styles = StyleSheet.create({
   },
   pickerValue: {
     backgroundColor: Color.WHITE,
+    color: Color.BLACK,
     flex: 1,
     fontSize: 15,
     borderWidth: 0,
@@ -164,6 +196,12 @@ const styles = StyleSheet.create({
   pickerIcon: {
     fontSize: 24,
     color: Color.GRAY,
+  },
+  err: {
+    marginBottom: 7.5,
+    marginLeft: 10,
+    fontSize: 12.5,
+    color: Color.RED900,
   },
 });
 

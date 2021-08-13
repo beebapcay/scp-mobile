@@ -18,5 +18,3 @@ export const generateTimeSeries = (step: number) => {
   }
   return rc;
 };
-
-// console.log(JSON.stringify(generateTimeSeries(15)));

@@ -7,8 +7,6 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Dimensions,
-  TextInput,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import { useHistory } from 'react-router-native';
@@ -20,6 +18,9 @@ import FormTextInput from './containers/FormTextInput';
 import FormDateTimeInput from './containers/FormDateTimeInput';
 import FormSelectInput from './containers/FormSelectInput';
 import FormResultInput from './containers/FormResultInput';
+import FormDialogSelectInput from './containers/FormDialogSelectInput';
+import nameJson from './dumpName.json';
+import { format } from 'date-fns';
 
 interface Props {}
 
@@ -32,10 +33,10 @@ interface IFormInput {
   reason: string;
   reasonText: string;
   destinationLeave: string;
-  timeLeaveFrom: string;
-  dateLeaveFrom: string;
-  timeLeaveTo: string;
-  dateLeaveTo: string;
+  leaveFrom: { time: string; date: string };
+  leaveTo: { time: string; date: string };
+  employee: string;
+  approver: string;
   emailCc: string;
 }
 
@@ -43,11 +44,16 @@ const SubmitLeave: FC<Props> = (props) => {
   const history = useHistory();
   const { t } = useTranslation();
 
+  const entryTime = '8:30';
+  const exitTime = '18:00';
+  const currentDate = format(new Date(), 'MMM dd, yyyy');
+
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<IFormInput>({ reValidateMode: 'onSubmit' });
 
   const reasonLeaveDropdown: SelectDropdown[] = [
@@ -55,10 +61,28 @@ const SubmitLeave: FC<Props> = (props) => {
     { label: t('field.other'), value: 'other' },
   ];
 
+  const resultLeaveDays =
+    (new Date(watch('leaveTo')?.date || currentDate).getTime() -
+      new Date(watch('leaveFrom')?.date || currentDate).getTime()) /
+      (1000 * 3600 * 24) +
+    1;
+
+  const rawName = nameJson as any[];
+  const nameDropdown: SelectDropdown[] = rawName.map((item) => ({
+    label: item.name,
+    value: (item.name as string).toLowerCase(),
+  }));
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log('Data submit: ');
+    console.log(data);
+  };
+
   return (
     <View style={style.container}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <AppBar canGoBack={true} title={t('title.submitLeave')} />
+
       <ScrollView showsVerticalScrollIndicator={false} style={style.scrollView}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -67,45 +91,99 @@ const SubmitLeave: FC<Props> = (props) => {
           <View style={style.form}>
             <Text style={style.sessionTitle}>{t('title.leaveInfo')}</Text>
 
-            <FormSelectInput
-              label={`${t('label.reason')}*:`}
-              placeholder={t('field.reasonPlaceholder')}
-              items={reasonLeaveDropdown}
-              style={style.rowInput}
+            <Controller
+              name="reason"
+              control={control}
+              rules={{ required: true }}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormSelectInput
+                  label={`${t('label.reason')}*:`}
+                  placeholder={t('field.reasonPlaceholder')}
+                  items={reasonLeaveDropdown}
+                  errText={errors.reason ? t('err.inputErr') : undefined}
+                  onChange={onChange}
+                  style={style.rowInput}
+                />
+              )}
             />
 
-            <FormTextInput
-              label={`${t('label.reasonText')}*:`}
-              labelHint={`(${t('label.reasonTextHint')})`}
-              multiline
-              numOfLine={5}
-              placeholder={t('field.reasonTextPlaceholder')}
-              style={style.rowInput}
+            <Controller
+              name="reasonText"
+              control={control}
+              rules={{ required: true }}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormTextInput
+                  onChange={onChange}
+                  label={`${t('label.reasonText')}*:`}
+                  labelHint={`(${t('label.reasonTextHint')})`}
+                  errText={errors.reasonText ? t('err.inputErr') : undefined}
+                  multiline
+                  numOfLine={5}
+                  placeholder={t('field.reasonTextPlaceholder')}
+                  style={style.rowInput}
+                />
+              )}
             />
 
-            <FormTextInput
-              label={`${t('label.destinationLeave')}*:`}
-              placeholder={t('field.destinationLeavePlaceholder')}
-              style={style.rowInput}
+            <Controller
+              name="destinationLeave"
+              control={control}
+              rules={{ required: true }}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormTextInput
+                  label={`${t('label.destinationLeave')}*:`}
+                  placeholder={t('field.destinationLeavePlaceholder')}
+                  style={style.rowInput}
+                  onChange={onChange}
+                  errText={
+                    errors.destinationLeave ? t('err.inputErr') : undefined
+                  }
+                />
+              )}
             />
 
-            <FormDateTimeInput
-              label={`${t('label.leavingFrom')}:`}
-              timeHint={`${t('field.timeHint')}:`}
-              dateHint={`${t('field.dateHint')}:`}
-              style={style.rowInput}
+            <Controller
+              name="leaveFrom"
+              control={control}
+              // rules={{ required: true }}
+              defaultValue={{ time: entryTime, date: currentDate }}
+              render={({ field: { onChange } }) => (
+                <FormDateTimeInput
+                  onChange={onChange}
+                  label={`${t('label.leavingFrom')}:`}
+                  timeHint={`${t('field.timeHint')}:`}
+                  dateHint={`${t('field.dateHint')}:`}
+                  defaultValue={{ time: entryTime, date: currentDate }}
+                  errText={errors.leaveFrom ? t('err.inputErr') : undefined}
+                  style={style.rowInput}
+                />
+              )}
             />
 
-            <FormDateTimeInput
-              label={`${t('label.leavingTo')}:`}
-              timeHint={`${t('field.timeHint')}:`}
-              dateHint={`${t('field.dateHint')}:`}
-              style={style.rowInput}
+            <Controller
+              name="leaveTo"
+              control={control}
+              // rules={{ required: true }}
+              defaultValue={{ time: exitTime, date: currentDate }}
+              render={({ field: { onChange } }) => (
+                <FormDateTimeInput
+                  onChange={onChange}
+                  label={`${t('label.leavingTo')}:`}
+                  timeHint={`${t('field.timeHint')}:`}
+                  defaultValue={{ time: exitTime, date: currentDate }}
+                  dateHint={`${t('field.dateHint')}:`}
+                  errText={errors.leaveTo ? t('err.inputErr') : undefined}
+                  style={style.rowInput}
+                />
+              )}
             />
 
             <FormResultInput
               label={`${t('label.leaveDays')}:`}
-              textResult="1"
+              textResult={resultLeaveDays.toString()}
               textUnit={t('unit.days')}
               style={style.rowInput}
             />
@@ -117,23 +195,76 @@ const SubmitLeave: FC<Props> = (props) => {
               style={style.rowInput}
             />
 
+            <Text style={style.sessionTitle}>{t('title.leaveControl')}</Text>
+
+            <Controller
+              name="employee"
+              control={control}
+              rules={{ required: true }}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormDialogSelectInput
+                  label={`${t('label.employee')}*:`}
+                  placeholder={t('field.employeePlaceholder')}
+                  onChange={onChange}
+                  items={nameDropdown}
+                  style={style.rowInput}
+                  errText={errors.employee ? t('err.inputErr') : undefined}
+                />
+              )}
+            />
+
+            <Controller
+              name="employee"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormDialogSelectInput
+                  label={`${t('label.approver')}:`}
+                  placeholder={t('field.approverPlaceholder')}
+                  onChange={onChange}
+                  items={nameDropdown}
+                  style={style.rowInput}
+                  errText={errors.employee ? t('err.inputErr') : undefined}
+                />
+              )}
+            />
+
             <Text style={style.sessionTitle}>{t('title.emailCc')}</Text>
 
-            <FormTextInput
-              label={`${t('label.emailCc')}*:`}
-              placeholder={t('field.emailCcPlaceholder')}
-              multiline
-              numOfLine={5}
-              style={style.rowInput}
+            <Controller
+              name="emailCc"
+              control={control}
+              rules={{ pattern: /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4};?)+$/ }}
+              defaultValue=""
+              render={({ field: { onChange } }) => (
+                <FormTextInput
+                  label={`${t('label.emailCc')}:`}
+                  placeholder={t('field.emailCcPlaceholder')}
+                  multiline
+                  errText={errors.emailCc ? t('err.inputErr') : undefined}
+                  numOfLine={5}
+                  onChange={onChange}
+                  style={style.rowInput}
+                />
+              )}
             />
           </View>
 
           <View style={style.actions}>
-            <TouchableOpacity style={style.submit} activeOpacity={0.8}>
+            <TouchableOpacity
+              style={style.submit}
+              activeOpacity={0.8}
+              onPress={handleSubmit(onSubmit)}
+            >
               <Text style={style.submitText}>{t('action.submit')}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={style.cancel} activeOpacity={0.8}>
+            <TouchableOpacity
+              style={style.cancel}
+              activeOpacity={0.8}
+              onPress={() => history.goBack()}
+            >
               <Text style={style.cancelText}>{t('action.cancel')}</Text>
             </TouchableOpacity>
           </View>

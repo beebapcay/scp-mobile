@@ -68,5 +68,11 @@
   "label.emailCc": "Email CC",
   "field.emailCcPlaceholder": "Các địa chỉ email được phân cách nhau bởi dấu chấm phẩy (;)",
   "action.submit": "Gửi",
-  "action.cancel": "Huỷ"
+  "action.cancel": "Huỷ",
+  "err.inputErr": "Thông tin nhập không hợp lệ",
+  "title.leaveControl": "Thông tin quản lý",
+  "label.employee": "Nhân viên",
+  "label.approver": "Người duyệt",
+  "field.employeePlaceholder": "Tên nhân viên",
+  "field.approverPlaceholder": "Tên người duyệt"
 }
