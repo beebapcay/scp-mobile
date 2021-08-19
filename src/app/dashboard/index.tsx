@@ -8,6 +8,10 @@ import { InfiniteTable } from '../../common/ui/base/table';
 import TableRow from '../../common/ui/base/table/row/TableRow';
 import { ScreenURL } from '../../models/enum';
 import { dataTemp as data } from './dataTemp';
+import { CButton } from '../../common/ui/base';
+import { Color } from '../../common/enum/enum';
+import IconButton from '../../common/ui/base/button/IconButton';
+import { useTranslation } from 'react-i18next';
 import style from './style';
 
 type DashboardRowType = {
@@ -15,15 +19,17 @@ type DashboardRowType = {
   from: Date;
   days: number;
   approver: string;
-}
+};
 
-interface Props extends RouteComponentProps { }
+interface Props extends RouteComponentProps {}
 
 const Dashboard: FC<Props> = (props: Props) => {
   // Props
   const { t } = useTranslation();
   const [sectionCount, setSectionCount] = useState<number>(1);
-  const [dataSection, setDataSection] = useState<DashboardRowType[]>(data.slice(0, sectionCount * maxItemPerSection));
+  const [dataSection, setDataSection] = useState<DashboardRowType[]>(
+    data.slice(0, sectionCount * maxItemPerSection)
+  );
   const columnRatio: number[] = [2, 3, 2, 5];
   const headers: string[] = [
     t('text.no.'),
@@ -55,12 +61,24 @@ const Dashboard: FC<Props> = (props: Props) => {
   function onDashboardRowPressed(index: number): void {
     history.push(ScreenURL.PERSON_DASHBOARD, { ...dataSection[index] });
   }
+  const onSubmitLeaveBtnPressed = (): void => {
+    history.push(ScreenURL.SUBMIT_LEAVE);
+  };
 
   // Component
   return (
     <View style={style.container}>
-
-      <AppBar title={t('title.dashboard')} />
+      <AppBar title="Leave statistic">
+        <TouchableOpacity
+          style={style.avatarButton}
+          onPress={() => props.history.push(ScreenURL.PROFILE)}
+        >
+          <Image
+            style={style.avatarImage}
+            source={require('../../../assets/icons/profile.png')}
+          />
+        </TouchableOpacity>
+      </AppBar>
 
       <View>
         <View style={style.rowContainer}>
@@ -71,6 +89,14 @@ const Dashboard: FC<Props> = (props: Props) => {
           <Text style={style.columnInfo}>{t('text.dayAvailable')}</Text>
           <Text style={style.columnValue}>{`10.5 ${t('text.dayUnit')}`}</Text>
         </View>
+        <IconButton
+          iconName="calendar-edit"
+          title={t('label.submitLeave')}
+          onPress={onSubmitLeaveBtnPressed}
+          backgroundColor={Color.BLUE500}
+          color={Color.WHITE}
+          style={style.submitBtn}
+        />
       </View>
 
       <InfiniteTable
@@ -93,7 +119,6 @@ const Dashboard: FC<Props> = (props: Props) => {
           </TableRow>
         ))}
       </InfiniteTable>
-
     </View>
   );
 };

@@ -10,6 +10,8 @@ export enum ScreenURL {
   RESET_PASSWORD = '/resetPassword',
   REGISTER = '/register',
   CHANGE_PASSWORD = '/changePassword',
+  PROFILE = '/profile',
+  SUBMIT_LEAVE = '/submitLeave',
 }
 
 export enum ScopeKey {
@@ -33,4 +35,9 @@ export enum Gender {
 export enum Positions {
   MEMBER = 'Member',
   MANAGER = 'Manager',
+}
+
+export enum ReasonLeave {
+  ANNUAL_LEAVE = 'Annual Leave',
+  OTHER = 'Other',
 }

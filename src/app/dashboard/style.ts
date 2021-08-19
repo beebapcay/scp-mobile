@@ -3,7 +3,8 @@ import { Color } from '../../common/enum/enum';
 
 const style = StyleSheet.create({
   container: {
-    flex: 1
+    marginTop: 24,
+    flex: 1,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -12,6 +13,9 @@ const style = StyleSheet.create({
     flex: 1,
     marginVertical: 8,
     textAlign: 'right',
+  },
+  submitBtn: {
+    marginRight: 10,
   },
   columnValue: {
     flex: 2,
@@ -38,6 +42,13 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     color: Color.WHITE,
+  },
+  avatarButton: {
+    marginHorizontal: 8,
+  },
+  avatarImage: {
+    width: 24,
+    height: 24,
   },
 });
 

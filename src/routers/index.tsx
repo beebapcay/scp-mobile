@@ -9,10 +9,11 @@ import Dashboard from '../app/dashboard';
 import ChangePassword from '../app/auth/change-pass';
 import Profile from '../app/profile';
 import PersonDashboard from '../app/dashboard/person-dashboard';
+import SubmitLeave from '../app/dashboard/submit-leave';
 import Main from '../app/main';
 import Notification from '../app/notification';
 
-interface Props { }
+interface Props {}
 
 const Routers: FC<Props> = (props: Props) => (
   <NativeRouter>
@@ -44,10 +45,7 @@ const Routers: FC<Props> = (props: Props) => (
         path={ScreenURL.FORGOT_PASSWORD}
         component={ForgotPassword}
       />
-      <PublicRoute
-        exact
-        path={ScreenURL.PROFILE}
-        component={Profile} />
+      <PublicRoute exact path={ScreenURL.PROFILE} component={Profile} />
       <PublicRoute
         exact
         path={ScreenURL.RESET_PASSWORD}
@@ -57,6 +55,11 @@ const Routers: FC<Props> = (props: Props) => (
         exact
         path={ScreenURL.CHANGE_PASSWORD}
         component={ChangePassword}
+      />
+      <PublicRoute
+        exact
+        path={ScreenURL.SUBMIT_LEAVE}
+        component={SubmitLeave}
       />
     </Switch>
   </NativeRouter>
