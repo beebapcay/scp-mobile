@@ -10,14 +10,31 @@ import ChangePassword from '../app/auth/change-pass';
 import Profile from '../app/profile';
 import PersonDashboard from '../app/dashboard/person-dashboard';
 import SubmitLeave from '../app/dashboard/submit-leave';
+import Main from '../app/main';
+import Notification from '../app/notification';
 
 interface Props {}
 
 const Routers: FC<Props> = (props: Props) => (
   <NativeRouter>
     <Switch>
-      <PublicRoute exact path={ScreenURL.HOME} component={Login} />
-      <PublicRoute exact path={ScreenURL.DASHBOARD} component={Dashboard} />
+      <PublicRoute
+        exact
+        path={ScreenURL.HOME}
+        component={Login}
+      />
+      <PublicRoute
+        path={ScreenURL.MAIN}
+        component={Main}
+      />
+      <PublicRoute
+        path={ScreenURL.DASHBOARD}
+        component={Dashboard}
+      />
+      <PublicRoute
+        path={ScreenURL.NOTIFICATION}
+        component={Notification}
+      />
       <PublicRoute
         exact
         path={ScreenURL.PERSON_DASHBOARD}

@@ -4,7 +4,7 @@ import style from './style';
 
 export interface TableRowProps {
   children: ReactChild[];
-  columnRatio?: number[];
+  columnRatio: number[];
   onPress?: () => void;
 }
 
@@ -17,7 +17,7 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
     // Style
     const rowStyle = StyleSheet.create({
       cell: {
-        flex: columnRatio?.[index] ?? 1,
+        flex: columnRatio[index],
         paddingVertical: 10,
       },
     });

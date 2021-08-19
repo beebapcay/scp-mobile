@@ -28,7 +28,7 @@ const style = StyleSheet.create({
   },
   table: {
     flex: 1,
-    margin: 10,
+    // margin: 10,
   },
   button: {
     alignSelf: 'center',

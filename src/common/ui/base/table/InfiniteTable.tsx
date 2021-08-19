@@ -1,69 +1,74 @@
-import React, { FC, ReactChild } from 'react';
-import { View, StyleSheet, ViewStyle, FlatList, TouchableWithoutFeedback } from 'react-native';
+import React, { FC, ReactChild, ReactText } from 'react';
+import { View, ViewStyle, FlatList, ActivityIndicator } from 'react-native';
+import { Color } from '../../../enum/enum';
 import { Row } from '../../../interface/interface';
 import TableHeader from './header/TableHeader';
 import style from './style'
 
 interface InfiniteTableProps {
   style?: ViewStyle;
-  columnRatio?: number[];
-  headers?: ReactChild[];
+  columnRatio: number[];
+  headers?: ReactText[];
   children?: ReactChild[];
   onNearEndReached?: () => void;
-  onRowClick?: (index: number) => void;
+  isLoadMore?: boolean;
 }
 
 const InfiniteTable: FC<InfiniteTableProps> = (props: InfiniteTableProps) => {
   // Props
-  const { style: tableStyle, headers, columnRatio, children, onNearEndReached, onRowClick } = props;
+  const {
+    style: tableStyle,
+    headers,
+    columnRatio,
+    children,
+    onNearEndReached,
+    isLoadMore = false
+  } = props;
 
   // Row
   function renderRow(row: Row<ReactChild>): JSX.Element {
     // Props
     const { item, index } = row;
 
-    // Style
-    const rowStyle: object = (index % 2 === 0 ? style.rowEven : style.rowOdd);
-
-    // Event
-    function onPress() {
-      if (onRowClick !== undefined)
-        onRowClick(index);
-    }
-
     // Element
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
-        <View style={rowStyle}>
-          {item}
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={index % 2 === 0 ? style.rowEven : style.rowOdd}>
+        {item}
+      </View>
     );
   }
 
-  // Component
-  return (
-    <View style={tableStyle}>
+  // Footer
+  const ListFooter = (): JSX.Element | null => {
+    return isLoadMore
+      ? (<ActivityIndicator style={style.loading} size='large' color={Color.BLUE} />)
+      : null;
+  }
 
-      {headers === undefined
-        ? undefined
-        : (
-          <TableHeader columnRatio={columnRatio}>
-            {headers}
-          </TableHeader>
-        )
-      }
+// Component
+return (
+  <View style={tableStyle}>
 
-      <FlatList
-        style={style.flatlist}
-        data={children}
-        renderItem={renderRow}
-        showsVerticalScrollIndicator={false}
-        onEndReached={onNearEndReached}
-        onEndReachedThreshold={0.1} />
+    {headers === undefined
+      ? undefined
+      : (
+        <TableHeader columnRatio={columnRatio}>
+          {headers}
+        </TableHeader>
+      )
+    }
 
-    </View>
-  );
+    <FlatList
+      style={style.flatlist}
+      data={children}
+      renderItem={renderRow}
+      ListFooterComponent={ListFooter}
+      showsVerticalScrollIndicator={false}
+      onEndReached={onNearEndReached}
+      onEndReachedThreshold={0.1} />
+
+  </View>
+);
 };
 
 export default InfiniteTable;

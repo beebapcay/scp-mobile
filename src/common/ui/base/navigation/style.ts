@@ -3,23 +3,11 @@ import { Color } from "../../../enum/enum";
 
 const style = StyleSheet.create({
   container: {
+    minHeight: 48,
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
     backgroundColor: Color.BLUE,
-  },
-  backButton: {
-    marginLeft: 8
-  },
-  backImage: {
-    width: 24,
-    height: 24
-  },
-  title: {
-    flex: 1,
-    margin: 8,
-    fontWeight: 'bold',
-    color: 'white',
-    fontSize: 18,
   },
 });
 
