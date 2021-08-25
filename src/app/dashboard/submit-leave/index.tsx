@@ -1,9 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import {
   View,
   Text,
   Platform,
-  StatusBar,
   ScrollView,
   KeyboardAvoidingView,
   Dimensions,
@@ -12,7 +11,7 @@ import {
 import { useHistory } from 'react-router-native';
 import style from './style';
 import { useTranslation } from 'react-i18next';
-import AppBar from '../../../common/ui/layout/app-bar';
+import AppBar from '../../../common/ui/base/app-bar';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import FormTextInput from './containers/FormTextInput';
 import FormDateTimeInput from './containers/FormDateTimeInput';
@@ -80,7 +79,6 @@ const SubmitLeave: FC<Props> = (props) => {
 
   return (
     <View style={style.container}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <AppBar canGoBack={true} title={t('title.submitLeave')} />
 
       <ScrollView showsVerticalScrollIndicator={false} style={style.scrollView}>
