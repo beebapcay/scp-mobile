@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    paddingVertical: 5,
-    paddingHorizontal: 12.5,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
     borderRadius: 5,
   },
   disableBtn: {
@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    paddingVertical: 5,
-    paddingHorizontal: 12.5,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
     borderRadius: 5,
     opacity: 0.65,
   },
   iconBtn: {
-    fontSize: 26,
+    fontSize: 24,
   },
   titleBtn: {
     fontSize: 16,

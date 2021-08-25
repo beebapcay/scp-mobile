@@ -1,16 +1,10 @@
 import React, { FC } from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
 import styles from './style';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface Props {
-  title: string;
+  title?: string;
   iconName: keyof typeof MaterialCommunityIcons.glyphMap;
   backgroundColor?: string;
   color?: string;
@@ -46,7 +40,9 @@ const IconButton: FC<Props> = (props) => {
           style={styles.iconBtn}
           color={color}
         />
-        <Text style={[styles.titleBtn, { color: color }]}>{title}</Text>
+        {title && (
+          <Text style={[styles.titleBtn, { color: color }]}>{title}</Text>
+        )}
       </>
     </TouchableOpacity>
   );

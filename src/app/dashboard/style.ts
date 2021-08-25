@@ -5,20 +5,35 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 12.5,
+    marginTop: 12.5,
+    marginBottom: 8,
+  },
+  headerInfoContainer: {
+    flex: 1,
+  },
   rowContainer: {
     flexDirection: 'row',
   },
   columnInfo: {
-    flex: 1,
-    marginVertical: 8,
+    flex: 3,
+    fontWeight: 'bold',
+    marginVertical: 6,
     textAlign: 'right',
   },
   submitBtn: {
-    marginRight: 10,
+    alignSelf: 'center',
+    borderRadius: 999,
+    width: 46,
+    height: 46,
   },
   columnValue: {
-    flex: 2,
-    margin: 8,
+    flex: 3,
+    margin: 6,
+    marginLeft: 12,
     color: 'red',
   },
   textCell: {

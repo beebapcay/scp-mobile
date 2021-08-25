@@ -8,7 +8,6 @@ import { InfiniteTable } from '../../common/ui/base/table';
 import TableRow from '../../common/ui/base/table/row/TableRow';
 import { ScreenURL } from '../../models/enum';
 import { dataTemp as data } from './dataTemp';
-import { CButton } from '../../common/ui/base';
 import { Color } from '../../common/enum/enum';
 import IconButton from '../../common/ui/base/button/IconButton';
 import style from './style';
@@ -75,18 +74,19 @@ const Dashboard: FC<Props> = (props: Props) => {
     <View style={style.container}>
       <AppBar title={t('title.dashboard')} />
 
-      <View>
-        <View style={style.rowContainer}>
-          <Text style={style.columnInfo}>{t('text.dayUsed')}</Text>
-          <Text style={style.columnValue}>{`4.5 ${t('text.dayUnit')}`}</Text>
-        </View>
-        <View style={style.rowContainer}>
-          <Text style={style.columnInfo}>{t('text.dayAvailable')}</Text>
-          <Text style={style.columnValue}>{`10.5 ${t('text.dayUnit')}`}</Text>
+      <View style={style.headerContainer}>
+        <View style={style.headerInfoContainer}>
+          <View style={style.rowContainer}>
+            <Text style={style.columnInfo}>{t('text.dayUsed')}</Text>
+            <Text style={style.columnValue}>{`4.5 ${t('text.dayUnit')}`}</Text>
+          </View>
+          <View style={style.rowContainer}>
+            <Text style={style.columnInfo}>{t('text.dayAvailable')}</Text>
+            <Text style={style.columnValue}>{`10.5 ${t('text.dayUnit')}`}</Text>
+          </View>
         </View>
         <IconButton
           iconName="calendar-edit"
-          title={t('label.submitLeave')}
           onPress={onSubmitLeaveBtnPressed}
           backgroundColor={Color.BLUE500}
           color={Color.WHITE}
