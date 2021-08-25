@@ -20,7 +20,7 @@ const style = StyleSheet.create({
     borderColor: Color.GRAY300,
   },
   sessionTitle: {
-    backgroundColor: Color.BLUE400,
+    backgroundColor: Color.DARK_BLUE,
     borderWidth: 1.5,
     borderBottomWidth: 0,
     borderColor: Color.WHITE,

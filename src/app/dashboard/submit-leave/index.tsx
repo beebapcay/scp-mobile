@@ -31,10 +31,8 @@ interface SelectDropdown {
 interface IFormInput {
   reason: string;
   reasonText: string;
-  destinationLeave: string;
   leaveFrom: { time: string; date: string };
   leaveTo: { time: string; date: string };
-  employee: string;
   approver: string;
   emailCc: string;
 }
@@ -126,24 +124,6 @@ const SubmitLeave: FC<Props> = (props) => {
             />
 
             <Controller
-              name="destinationLeave"
-              control={control}
-              rules={{ required: true }}
-              defaultValue=""
-              render={({ field: { onChange } }) => (
-                <FormTextInput
-                  label={`${t('label.destinationLeave')}*:`}
-                  placeholder={t('field.destinationLeavePlaceholder')}
-                  style={style.rowInput}
-                  onChange={onChange}
-                  errText={
-                    errors.destinationLeave ? t('err.inputErr') : undefined
-                  }
-                />
-              )}
-            />
-
-            <Controller
               name="leaveFrom"
               control={control}
               // rules={{ required: true }}
@@ -186,34 +166,10 @@ const SubmitLeave: FC<Props> = (props) => {
               style={style.rowInput}
             />
 
-            <FormResultInput
-              label={`${t('label.deductedDays')}:`}
-              textResult="1"
-              textUnit={t('unit.days')}
-              style={style.rowInput}
-            />
-
             <Text style={style.sessionTitle}>{t('title.leaveControl')}</Text>
 
             <Controller
-              name="employee"
-              control={control}
-              rules={{ required: true }}
-              defaultValue=""
-              render={({ field: { onChange } }) => (
-                <FormDialogSelectInput
-                  label={`${t('label.employee')}*:`}
-                  placeholder={t('field.employeePlaceholder')}
-                  onChange={onChange}
-                  items={nameDropdown}
-                  style={style.rowInput}
-                  errText={errors.employee ? t('err.inputErr') : undefined}
-                />
-              )}
-            />
-
-            <Controller
-              name="employee"
+              name="approver"
               control={control}
               defaultValue=""
               render={({ field: { onChange } }) => (
@@ -223,12 +179,12 @@ const SubmitLeave: FC<Props> = (props) => {
                   onChange={onChange}
                   items={nameDropdown}
                   style={style.rowInput}
-                  errText={errors.employee ? t('err.inputErr') : undefined}
+                  errText={errors.approver ? t('err.inputErr') : undefined}
                 />
               )}
             />
 
-            <Text style={style.sessionTitle}>{t('title.emailCc')}</Text>
+            {/* <Text style={style.sessionTitle}>{t('title.emailCc')}</Text> */}
 
             <Controller
               name="emailCc"
