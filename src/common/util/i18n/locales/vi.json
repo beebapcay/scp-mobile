@@ -74,5 +74,15 @@
   "label.employee": "Nhân viên",
   "label.approver": "Người duyệt",
   "field.employeePlaceholder": "Tên nhân viên",
-  "field.approverPlaceholder": "Tên người duyệt"
+  "field.approverPlaceholder": "Tên người duyệt",
+  "title.notification": "Thông báo",
+  "title.dashboard": "Dashboard",
+  "text.dayUsed": "Ngày đã sửa dụng:",
+  "text.dayAvailable": "Ngày còn lại:",
+  "text.dayUnit": "ngày",
+  "text.no": "Stt",
+  "text.from": "Từ",
+  "text.to": "Đến",
+  "text.days": "Ngày",
+  "text.approver": "Người duyệt"
 }

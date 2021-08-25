@@ -11,7 +11,6 @@ import { dataTemp as data } from './dataTemp';
 import { CButton } from '../../common/ui/base';
 import { Color } from '../../common/enum/enum';
 import IconButton from '../../common/ui/base/button/IconButton';
-import { useTranslation } from 'react-i18next';
 import style from './style';
 
 type DashboardRowType = {
@@ -35,21 +34,27 @@ const Dashboard: FC<Props> = (props: Props) => {
     t('text.no.'),
     t('text.from'),
     t('text.days'),
-    t('text.approver')
+    t('text.approver'),
   ];
   const history = useHistory<{}>();
   const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
 
   // Supporting function
   async function fetchData(): Promise<void> {
-    if (sectionCount >= Math.ceil(data.length / maxItemPerSection))
-      return;
+    if (sectionCount >= Math.ceil(data.length / maxItemPerSection)) return;
 
-    await new Promise<void>(() => setTimeout(() => {
-      const newSectionCount = sectionCount + 1;
-      setSectionCount(newSectionCount);
-      setDataSection(data.slice(0, Math.min(data.length, newSectionCount * maxItemPerSection)));
-    }));
+    await new Promise<void>(() =>
+      setTimeout(() => {
+        const newSectionCount = sectionCount + 1;
+        setSectionCount(newSectionCount);
+        setDataSection(
+          data.slice(
+            0,
+            Math.min(data.length, newSectionCount * maxItemPerSection)
+          )
+        );
+      })
+    );
   }
 
   // Events
@@ -68,17 +73,7 @@ const Dashboard: FC<Props> = (props: Props) => {
   // Component
   return (
     <View style={style.container}>
-      <AppBar title="Leave statistic">
-        <TouchableOpacity
-          style={style.avatarButton}
-          onPress={() => props.history.push(ScreenURL.PROFILE)}
-        >
-          <Image
-            style={style.avatarImage}
-            source={require('../../../assets/icons/profile.png')}
-          />
-        </TouchableOpacity>
-      </AppBar>
+      <AppBar title={t('title.dashboard')} />
 
       <View>
         <View style={style.rowContainer}>

@@ -74,5 +74,15 @@
   "label.employee": "Employee",
   "label.approver": "Approver",
   "field.employeePlaceholder": "Choose Employee",
-  "field.approverPlaceholder": "Choose Approver"
+  "field.approverPlaceholder": "Choose Approver",
+  "title.notification": "Notification",
+  "title.dashboard": "Dashboard",
+  "text.dayUsed": "Day used:",
+  "text.dayAvailable": "Day available:",
+  "text.dayUnit": "day(s)",
+  "text.no": "No",
+  "text.from": "From",
+  "text.to": "To",
+  "text.days": "Days",
+  "text.approver": "Approver"
 }
